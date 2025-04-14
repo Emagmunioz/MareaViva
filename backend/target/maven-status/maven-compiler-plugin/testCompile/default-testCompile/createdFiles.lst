@@ -1,1 +1,6 @@
+com\mareaviva\DummyIntegrationTest.class
+com\mareaviva\UserTest.class
+com\mareaviva\UserServiceTest.class
+com\mareaviva\UserRegistrationDTOTest.class
 com\mareaviva\ApplicationTests.class
+com\mareaviva\UserControllerIntegrationTest.class
