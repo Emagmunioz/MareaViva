@@ -1,6 +1,7 @@
 com\mareaviva\Application.class
 com\mareaviva\service\UserService.class
+com\mareaviva\model\User.class
 controller\UserController.class
+com\mareaviva\repository\UserRepository.class
 com\mareaviva\dto\UserRegistrationDTO.class
-model\User.class
 com\mareaviva\controller\UserController.class

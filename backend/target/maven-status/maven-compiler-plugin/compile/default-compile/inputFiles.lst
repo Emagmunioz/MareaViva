@@ -2,5 +2,6 @@ C:\Users\VORPC\Desktop\marea-viva\backend\src\main\java\com\mareaviva\Applicatio
 C:\Users\VORPC\Desktop\marea-viva\backend\src\main\java\com\mareaviva\controller\UserController.java
 C:\Users\VORPC\Desktop\marea-viva\backend\src\main\java\com\mareaviva\service\UserService.java
 C:\Users\VORPC\Desktop\marea-viva\backend\src\main\java\com\mareaviva\dto\UserRegistrationDTO.java
-C:\Users\VORPC\Desktop\marea-viva\backend\src\main\java\model\User.java
+C:\Users\VORPC\Desktop\marea-viva\backend\src\main\java\com\mareaviva\model\User.java
 C:\Users\VORPC\Desktop\marea-viva\backend\src\main\java\controller\UserController.java
+C:\Users\VORPC\Desktop\marea-viva\backend\src\main\java\com\mareaviva\repository\UserRepository.java
