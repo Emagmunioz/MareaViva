@@ -1,4 +1,5 @@
-package controller;
+package com.mareaviva.controller;
+
 import com.mareaviva.dto.UserRegistrationDTO;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -15,4 +16,5 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body("User registered successfully");
     }
 }
+
 
