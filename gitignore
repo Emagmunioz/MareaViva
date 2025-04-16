@@ -1,0 +1,38 @@
+
+# Node modules
+frontend/node_modules/
+
+# Build output
+frontend/dist/
+backend/target/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE settings
+.vscode/
+.idea/
+
+# Multimedia files and large binaries
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Personal or accidental folders
+Personal/
+Importa/
+backup/
