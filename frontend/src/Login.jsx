@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { login } from "./services/authService";
 import Modal from "./components/Modal";
 
 export default function Login() {
@@ -9,77 +11,66 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  const [modalData, setModalData] = useState({ show: false, message: "", type: "success" });
+  const navigate = useNavigate();
+  const [modal, setModal] = useState({ open: false, message: "", type: "success" });
 
   const onSubmit = async (data) => {
     try {
-      // Simulación de login (sustituye con llamada a backend)
-      if (data.email === "test@test.com" && data.password === "123456") {
-        setModalData({
-          show: true,
-          message: "¡Inicio de sesión exitoso!",
-          type: "success",
-        });
-      } else {
-        throw new Error("Credenciales inválidas");
-      }
+      await login(data.email, data.password);
+      navigate("/dashboard");
     } catch (error) {
-      setModalData({
-        show: true,
-        message: error.message || "Error de autenticación.",
+      setModal({
+        open: true,
+        message: "Correo o contraseña incorrectos.",
         type: "error",
       });
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-amber-100 to-rose-300 px-4">
-      {modalData.show && (
-        <Modal
-          message={modalData.message}
-          type={modalData.type}
-          onClose={() => setModalData({ ...modalData, show: false })}
-        />
-      )}
-
+    <div className="min-h-screen bg-gradient-to-b from-beige-100 to-orange-200 flex items-center justify-center">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-6 rounded-lg shadow-md w-full max-w-md"
+        className="bg-white p-6 rounded shadow-md w-full max-w-md"
       >
-        <h2 className="text-2xl font-bold text-center mb-4">Iniciar sesión</h2>
+        <h2 className="text-xl font-semibold mb-4 text-center text-coral-700">Iniciar sesión</h2>
 
         <input
           type="email"
           {...register("email", {
-            required: "Correo obligatorio",
+            required: "El correo es obligatorio",
             pattern: {
-              value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
-              message: "Correo no válido",
+              value: /^\S+@\S+$/i,
+              message: "Formato de correo inválido",
             },
           })}
           placeholder="Correo electrónico"
-          className="w-full mb-3 p-2 border border-gray-300 rounded"
+          className="input mb-2"
         />
         {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
 
         <input
           type="password"
           {...register("password", {
-            required: "Contraseña obligatoria",
-            minLength: { value: 6, message: "Mínimo 6 caracteres" },
+            required: "La contraseña es obligatoria",
           })}
           placeholder="Contraseña"
-          className="w-full mb-4 p-2 border border-gray-300 rounded"
+          className="input mb-4"
         />
         {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
 
-        <button
-          type="submit"
-          className="w-full bg-orange-500 text-white py-2 rounded hover:bg-orange-600"
-        >
-          Entrar
+        <button type="submit" className="w-full bg-coral-500 text-white py-2 rounded hover:bg-coral-600">
+          Iniciar sesión
         </button>
       </form>
+
+      {modal.open && (
+        <Modal
+          message={modal.message}
+          type={modal.type}
+          onClose={() => setModal({ ...modal, open: false })}
+        />
+      )}
     </div>
   );
 }
