@@ -1,3 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-ReactDOM.render(<div>Hola Marea Viva</div>, document.getElementById('root'));
+import ReactDOM from 'react-dom/client';
+import App from './App'; 
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);

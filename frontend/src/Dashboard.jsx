@@ -1,5 +1,5 @@
 import React from "react";
-import { logout } from "./lib/auth";
+import { logout } from "./services/authService.js";
 
 export default function Dashboard() {
   const handleLogout = () => {
