@@ -1,54 +1,83 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { login } from "./services/authService";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import Modal from "./components/Modal";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const [modalData, setModalData] = useState({ show: false, message: "", type: "success" });
+
+  const onSubmit = async (data) => {
     try {
-      await login(email, password);
-      navigate("/dashboard");
-    } catch (err) {
-      setError(err.message);
+      // Simulación de login (sustituye con llamada a backend)
+      if (data.email === "test@test.com" && data.password === "123456") {
+        setModalData({
+          show: true,
+          message: "¡Inicio de sesión exitoso!",
+          type: "success",
+        });
+      } else {
+        throw new Error("Credenciales inválidas");
+      }
+    } catch (error) {
+      setModalData({
+        show: true,
+        message: error.message || "Error de autenticación.",
+        type: "error",
+      });
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-lg shadow-md w-80"
-      >
-        <h2 className="text-2xl font-semibold mb-6 text-center">Login</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-amber-100 to-rose-300 px-4">
+      {modalData.show && (
+        <Modal
+          message={modalData.message}
+          type={modalData.type}
+          onClose={() => setModalData({ ...modalData, show: false })}
+        />
+      )}
 
-        {error && (
-          <p className="text-red-500 text-sm text-center mb-4">{error}</p>
-        )}
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="bg-white p-6 rounded-lg shadow-md w-full max-w-md"
+      >
+        <h2 className="text-2xl font-bold text-center mb-4">Iniciar sesión</h2>
 
         <input
           type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-2 mb-4 border border-gray-300 rounded"
+          {...register("email", {
+            required: "Correo obligatorio",
+            pattern: {
+              value: /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+              message: "Correo no válido",
+            },
+          })}
+          placeholder="Correo electrónico"
+          className="w-full mb-3 p-2 border border-gray-300 rounded"
         />
+        {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
+
         <input
           type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-2 mb-4 border border-gray-300 rounded"
+          {...register("password", {
+            required: "Contraseña obligatoria",
+            minLength: { value: 6, message: "Mínimo 6 caracteres" },
+          })}
+          placeholder="Contraseña"
+          className="w-full mb-4 p-2 border border-gray-300 rounded"
         />
+        {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
+
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          className="w-full bg-orange-500 text-white py-2 rounded hover:bg-orange-600"
         >
-          Login
+          Entrar
         </button>
       </form>
     </div>
