@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/auth")
 public class UserController {
     private final UserService userService;
 
@@ -19,7 +19,7 @@ public class UserController {
 
 
 
-    @PostMapping
+    @PostMapping("/register")
     public ResponseEntity<String> registerUser(@Valid @RequestBody UserRegistrationDTO userDto){ userService.registerUser(userDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("User registered successfully");
     }
