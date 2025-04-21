@@ -1,4 +1,5 @@
 package com.mareaviva.service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.mareaviva.dto.UserRegistrationDTO;
 import com.mareaviva.model.User;
