@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import api from "./services/api"; // Asegúrate de que apunta al backend
 import Modal from "./components/Modal";
 
 export default function Register() {
@@ -17,21 +17,24 @@ export default function Register() {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post("http://localhost:8080/api/users", data);
+      const response = await api.post("/auth/register", data);
+
+      const token = response.data.token;
+      localStorage.setItem("token", token); // login automático
+
       setModal({
         open: true,
-        message: "¡Registro completado! Serás redirigido al inicio de sesión.",
+        message: "¡Registro exitoso! Redirigiendo...",
         type: "success",
       });
 
-      // Redirige tras 2 segundos
       setTimeout(() => {
-        navigate("/login");
+        navigate("/dashboard"); // o /perfil, /inicio, etc.
       }, 2000);
     } catch (error) {
       setModal({
         open: true,
-        message: "Error al registrar. Intenta nuevamente.",
+        message: error.response?.data?.error || "Error al registrar. Intenta nuevamente.",
         type: "error",
       });
     }
@@ -45,6 +48,7 @@ export default function Register() {
       >
         <h2 className="text-xl font-semibold mb-4 text-center text-coral-700">Registro</h2>
 
+        {/* Campos del formulario */}
         <input {...register("firstName", { required: "Nombre obligatorio" })} placeholder="Nombre" className="input mb-2" />
         {errors.firstName && <p className="text-red-500 text-sm">{errors.firstName.message}</p>}
 
