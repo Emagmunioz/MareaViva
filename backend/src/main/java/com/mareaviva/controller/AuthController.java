@@ -1,5 +1,6 @@
 package com.mareaviva.controller;
-
+import com.mareaviva.dto.UserRegistrationDTO;
+import jakarta.validation.Valid;
 import com.mareaviva.dto.LoginDTO;
 import com.mareaviva.model.User;
 import com.mareaviva.service.UserService;
@@ -34,4 +35,18 @@ public class AuthController {
 
         return ResponseEntity.ok().body("{\"token\":\"" + token + "\"}");
     }
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody @Valid UserRegistrationDTO dto) {
+    try {
+        userService.registerUser(dto);
+
+        // Autologin tras registro
+        String token = jwtUtil.generateToken(dto.getEmail());
+
+        return ResponseEntity.ok().body("{\"token\":\"" + token + "\"}");
+    } catch (Exception e) {
+        return ResponseEntity.status(400).body("{\"error\":\"" + e.getMessage() + "\"}");
+    }
+}
+
 }
