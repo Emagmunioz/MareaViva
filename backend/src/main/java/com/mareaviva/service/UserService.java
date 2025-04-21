@@ -1,15 +1,16 @@
 package com.mareaviva.service;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.mareaviva.dto.UserRegistrationDTO;
 import com.mareaviva.model.User;
 import com.mareaviva.repository.UserRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); // O usa @Autowired
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -24,9 +25,13 @@ public class UserService {
                 userDto.getDni(),
                 userDto.getPhone(),
                 userDto.getEmail(),
-                userDto.getPassword()
+                passwordEncoder.encode(userDto.getPassword()) // Importante: encriptar
         );
 
         userRepository.save(user);
+    }
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }
