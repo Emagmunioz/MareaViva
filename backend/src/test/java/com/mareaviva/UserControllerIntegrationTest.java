@@ -1,4 +1,4 @@
-package com.mareaviva;
+package mareaviva.com.mareaviva;
 
 
 import com.mareaviva.dto.UserRegistrationDTO;
@@ -36,7 +36,8 @@ public class UserControllerIntegrationTest {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<UserRegistrationDTO> request = new HttpEntity<>(userDto, headers);
 
-        ResponseEntity<String> response = restTemplate.postForEntity("/api/users", request, String.class);
+        ResponseEntity<String> response = restTemplate.postForEntity("/auth/register", request, String.class);
+
 
         // Verificar respuesta
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);

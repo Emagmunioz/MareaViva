@@ -1,5 +1,5 @@
 
-package com.mareaviva;
+package mareaviva.com.mareaviva;
 
 import com.mareaviva.model.User;
 import org.junit.jupiter.api.Test;

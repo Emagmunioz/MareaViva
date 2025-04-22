@@ -1,5 +1,5 @@
 
-package com.mareaviva;
+package mareaviva.com.mareaviva;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

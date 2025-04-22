@@ -1,4 +1,4 @@
-package com.mareaviva;
+package mareaviva.com.mareaviva;
 
 import com.mareaviva.dto.UserRegistrationDTO;
 import com.mareaviva.model.User;
