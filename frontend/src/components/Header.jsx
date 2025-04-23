@@ -20,8 +20,9 @@ export default function Header() {
           <Link to="/" className="hover:underline">Inicio</Link>
          <Link to="/como-funciona" className="hover:underline">Cómo funciona</Link>
 
-          <a href="#sobre-nosotros" className="hover:underline">Sobre Nosotros</a>
-          <a href="#fundaciones" className="hover:underline">Fundaciones</a>
+         <Link to="/voluntarios" className="hover:underline">Voluntarios</Link>
+
+          <a href="#fundaciones" className="hover:underline">Profesionales</a>
           <a href="#contacto" className="hover:underline">Contacto</a>
           <Link to="/login" className="bg-white text-[#2ccfcf] px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">Iniciar sesión</Link>
           <Link to="/register" className="bg-white text-[#2ccfcf] px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">Registrarse</Link>
@@ -44,8 +45,9 @@ export default function Header() {
           <Link to="/" onClick={() => setMenuOpen(false)}>Inicio</Link>
           <Link to="/como-funciona" onClick={() => setMenuOpen(false)}>Cómo funciona</Link>
 
-          <a href="#sobre-nosotros" onClick={() => setMenuOpen(false)}>Sobre Nosotros</a>
-          <a href="#fundaciones" onClick={() => setMenuOpen(false)}>Fundaciones</a>
+          <Link to="/voluntarios" onClick={() => setMenuOpen(false)}>Voluntarios</Link>
+
+          <a href="#fundaciones" onClick={() => setMenuOpen(false)}>Profesionales</a>
           <a href="#contacto" onClick={() => setMenuOpen(false)}>Contacto</a>
           <Link to="/login" className="bg-white text-[#2ccfcf] px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition" onClick={() => setMenuOpen(false)}>Iniciar sesión</Link>
           <Link to="/register" className="bg-white text-[#2ccfcf] px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition" onClick={() => setMenuOpen(false)}>Registrarse</Link>

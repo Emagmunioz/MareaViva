@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import GroupForm from "@/components/GroupForm";
 import terapia from "@/assets/terapia.png";
 
-export default function GroupSignupPage() {
+export default function GroupsFormPage() {
   return (
     <div className="font-['Poppins'] text-black bg-gradient-to-b from-[#f1f4f3] to-[#c7d3d2] min-h-screen">
       <Header />
