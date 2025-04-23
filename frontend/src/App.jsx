@@ -6,7 +6,8 @@ import Dashboard from "./Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import Home from "./pages/Home";
 import HowItWorks from "./pages/HowItWorks";
-
+import EmotionEvaluation from "@/pages/EmotionEvaluation";
+import ChatSupport from "./pages/ChatSupport";
 export default function App() {
   return (
     <BrowserRouter>
@@ -27,7 +28,8 @@ export default function App() {
 
         <Route path="*" element={<Home />} />
         <Route path="/como-funciona" element={<HowItWorks />} />
-
+        <Route path="/cuestionario" element={<EmotionEvaluation />} />
+        <Route path="/chat" element={<ChatSupport />} />
       </Routes>
     </BrowserRouter>
   );

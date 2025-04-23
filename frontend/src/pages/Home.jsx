@@ -8,7 +8,7 @@ import supportImage from "../assets/emotional-support.png";
 
 export default function Home() {
   return (
-    <div className="font-['Poppins'] text-black bg-gradient-to-b from-[#f1f4f3] to-[#c7d3d2] min-h-screen">
+    <div className="font-['Poppins'] text-black bg-gradient-to-b from-[#f1f4f3] to-[#96b3b1] min-h-screen">
       <Header />
 
       {/* Sección introductoria */}
