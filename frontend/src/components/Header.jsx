@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
-
+import rotulo from "../assets/RotuloMareaViva.png"
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="bg-[#2ccfcf] text-white shadow px-6 py-2">
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto flex items-center justify-between h-24">
         {/* Logo */}
-        <div className="flex items-center h-full">
-          <img src={logo} alt="Logo Marea Viva" className="h-full object-contain" />
-          <span className="ml-3 text-2xl font-semibold hidden sm:inline">Marea Viva</span>
-        </div>
+        <div className="flex items-center h-full gap-3 flex-shrink-0">
+         <img src={logo} alt="Logo Marea Viva" className="h-full max-h-16 object-contain" />
+         <img src={rotulo} alt="Rótulo Marea Viva" className="h-full max-h-12 object-contain" />
+      </div>
+
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-6 items-center text-sm font-medium">
