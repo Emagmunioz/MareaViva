@@ -18,7 +18,8 @@ export default function Header() {
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-6 items-center text-sm font-medium">
           <Link to="/" className="hover:underline">Inicio</Link>
-          <a href="#como-funciona" className="hover:underline">Cómo funciona</a>
+         <Link to="/como-funciona" className="hover:underline">Cómo funciona</Link>
+
           <a href="#sobre-nosotros" className="hover:underline">Sobre Nosotros</a>
           <a href="#fundaciones" className="hover:underline">Fundaciones</a>
           <a href="#contacto" className="hover:underline">Contacto</a>
@@ -41,7 +42,8 @@ export default function Header() {
       {menuOpen && (
         <div className="md:hidden flex flex-col gap-3 mt-4 text-sm font-medium text-center">
           <Link to="/" onClick={() => setMenuOpen(false)}>Inicio</Link>
-          <a href="#como-funciona" onClick={() => setMenuOpen(false)}>Cómo funciona</a>
+          <Link to="/como-funciona" onClick={() => setMenuOpen(false)}>Cómo funciona</Link>
+
           <a href="#sobre-nosotros" onClick={() => setMenuOpen(false)}>Sobre Nosotros</a>
           <a href="#fundaciones" onClick={() => setMenuOpen(false)}>Fundaciones</a>
           <a href="#contacto" onClick={() => setMenuOpen(false)}>Contacto</a>

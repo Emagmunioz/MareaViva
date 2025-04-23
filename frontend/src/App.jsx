@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import Home from "./pages/Home";
+import HowItWorks from "./pages/HowItWorks";
 
 export default function App() {
   return (
@@ -25,6 +26,8 @@ export default function App() {
         />
 
         <Route path="*" element={<Home />} />
+        <Route path="/como-funciona" element={<HowItWorks />} />
+
       </Routes>
     </BrowserRouter>
   );

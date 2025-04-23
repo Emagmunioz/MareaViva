@@ -1,14 +1,14 @@
-import React from "react";
 import Header from "../components/Header";
 import Section from "../components/Section";
 import Cards from "../components/Cards";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
-import supportImage from "../assets/emotional-support.png"; // ✅ asegúrate de que el nombre coincida
+import supportImage from "../assets/emotional-support.png";
+
 
 export default function Home() {
   return (
-    <div className="font-['Poppins'] text-[#1a1a1a] bg-[#fefafa]">
+    <div className="font-['Poppins'] text-black bg-gradient-to-b from-[#f1f4f3] to-[#c7d3d2] min-h-screen">
       <Header />
 
       {/* Sección introductoria */}
@@ -17,7 +17,6 @@ export default function Home() {
           Más de 280 millones de personas sufren de ansiedad o depresión. Muchas de ellas no tienen acceso a apoyo emocional. Nosotros queremos cambiar eso.
         </p>
 
-        {/* ✅ Imagen emocional aquí */}
         <div className="flex justify-center mb-10">
           <img
             src={supportImage}
@@ -27,7 +26,6 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Sección siguiente */}
       <Cards />
 
       <Section title="Sobre Nosotros">
