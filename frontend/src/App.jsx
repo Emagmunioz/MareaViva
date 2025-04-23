@@ -1,18 +1,20 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Register from "./Register";
-import Login from "./Login";
+// import Register from "./Register";
+// import Login from "./Login";
 import Dashboard from "./Dashboard";
 import PrivateRoute from "./PrivateRoute";
-import Header from "./components/Header";
+import Home from "./pages/Home";
 
 export default function App() {
   return (
     <BrowserRouter>
-    <Header />
       <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        {/* Estas rutas están comentadas hasta que vuelvas a agregar los archivos */}
+        {/* <Route path="/register" element={<Register />} /> */}
+        {/* <Route path="/login" element={<Login />} /> */}
+
+        <Route path="/" element={<Home />} />
         <Route
           path="/dashboard"
           element={
@@ -21,7 +23,8 @@ export default function App() {
             </PrivateRoute>
           }
         />
-        <Route path="*" element={<Login />} />
+
+        <Route path="*" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
