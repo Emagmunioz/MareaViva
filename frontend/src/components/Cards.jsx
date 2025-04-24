@@ -14,7 +14,7 @@ const cardData = [
   {
     title: "Profesionales",
     desc: "Promocionan su trabajo ayudando en una causa solidaria.",
-    route: "/como-funciona",
+    route: "/profesionales",
   },
 ];
 

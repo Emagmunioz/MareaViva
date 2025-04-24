@@ -3,8 +3,10 @@ import Section from "../components/Section";
 import Cards from "../components/Cards";
 import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
+import ParticipaApoyaSection from "../components/ParticipaApoyaSection";
 import supportImage from "../assets/emotional-support.png";
-
+import anaImage from "../assets/ana.png";
+import davidImage from "../assets/david.png";
 
 export default function Home() {
   return (
@@ -37,12 +39,25 @@ export default function Home() {
         </p>
       </Section>
 
-      <Section title="Impacto Social">
-        <p className="italic mb-2">“Gracias a Laura, ahora duermo tranquila.” – Ana, 29 años</p>
-        <p className="italic">“Me motivó a seguir estudiando psicología.” – David, voluntario</p>
-      </Section>
+      {/* Sección Impacto Social con fondo estilizado */}
+      <section className="bg-white/90 py-16 px-6 rounded-xl shadow-inner max-w-6xl mx-auto my-12">
+        <h2 className="text-3xl font-semibold text-center text-teal-700 mb-10">Impacto Social</h2>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="text-center">
+            <img src={anaImage} alt="Ana" className="mx-auto rounded-full w-32 h-32 object-cover mb-4 shadow-md" />
+            <p className="italic text-lg">“Gracias a Laura, ahora duermo tranquila.”<br />– Ana, 29 años</p>
+          </div>
+          <div className="text-center">
+            <img src={davidImage} alt="David" className="mx-auto rounded-full w-32 h-32 object-cover mb-4 shadow-md" />
+            <p className="italic text-lg">“Me motivó a seguir estudiando psicología.”<br />– David, voluntario</p>
+          </div>
+        </div>
+      </section>
 
-      <ContactForm />
+      {/* Sección Participa o Apoya */}
+      <ParticipaApoyaSection />
+
+      
       <Footer />
     </div>
   );
