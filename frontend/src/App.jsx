@@ -12,6 +12,7 @@ import ProfileForm from "@/pages/ProfileForm";
 import GroupsFormPage from "@/pages/GroupsFormPage";
 import VolunteersPage from "@/pages/VolunteersPage";
 import FoundationsPage from "@/pages/FoundationsPage";
+import ContactPage from "@/pages/ContactPage";
 export default function App() {
   return (
     <BrowserRouter>
@@ -38,6 +39,7 @@ export default function App() {
         <Route path="/chat" element={<ChatSupport />} />
         <Route path="/voluntarios" element={<VolunteersPage />} />
         <Route path="/profesionales" element={<FoundationsPage />} />
+        <Route path="/contacto" element={<ContactPage />} />
       </Routes>
     </BrowserRouter>
   );

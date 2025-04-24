@@ -24,7 +24,7 @@ export default function Header() {
 
          <Link to="/profesionales" className="hover:underline">Profesionales</Link>
 
-          <a href="#contacto" className="hover:underline">Contacto</a>
+          <Link to="/contacto" className="hover:underline">Contacto</Link>
           <Link to="/login" className="bg-white text-[#2ccfcf] px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">Iniciar sesión</Link>
           <Link to="/register" className="bg-white text-[#2ccfcf] px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition">Registrarse</Link>
         </nav>
@@ -50,7 +50,7 @@ export default function Header() {
 
           <Link to="/profesionales" onClick={() => setMenuOpen(false)}>Profesionales</Link>
 
-          <a href="#contacto" onClick={() => setMenuOpen(false)}>Contacto</a>
+          <Link to="/contacto" onClick={() => setMenuOpen(false)}>Contacto</Link>
           <Link to="/login" className="bg-white text-[#2ccfcf] px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition" onClick={() => setMenuOpen(false)}>Iniciar sesión</Link>
           <Link to="/register" className="bg-white text-[#2ccfcf] px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition" onClick={() => setMenuOpen(false)}>
   Registrarse
