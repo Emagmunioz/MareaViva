@@ -2,6 +2,7 @@ com\mareaviva\Application.class
 com\mareaviva\service\UserService.class
 com\mareaviva\model\User.class
 com\mareaviva\controller\AuthController.class
+com\mareaviva\controller\PingController.class
 com\mareaviva\dto\LoginDTO.class
 com\mareaviva\repository\UserRepository.class
 com\mareaviva\config\SecurityConfig.class

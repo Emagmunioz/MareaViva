@@ -16,36 +16,36 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/auth")
 public class AuthController {
 
-    @Autowired
+    //@Autowired
     private UserService userService;
 
     @Autowired
     private JwtUtil jwtUtil;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+   // @Autowired
+    //private PasswordEncoder passwordEncoder;
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginDTO dto) {
-        User user = userService.findByEmail(dto.getEmail());
+   // @PostMapping("/login")
+   // public ResponseEntity<?> login(@RequestBody LoginDTO dto) {
+      //  User user = userService.findByEmail(dto.getEmail());
 
-        if (user == null || !passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
-            return ResponseEntity.status(401).body("Credenciales incorrectas");
-        }
+       // if (user == null || !passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
+         //   return ResponseEntity.status(401).body("Credenciales incorrectas");
+        //}
 
-        String token = jwtUtil.generateToken(user.getEmail());
+        //String token = jwtUtil.generateToken(user.getEmail());
 
-        return ResponseEntity.ok().body("{\"token\":\"" + token + "\"}");
-    }
-    @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody @Valid UserRegistrationDTO dto) {
-    try {
-        userService.registerUser(dto);
-        return ResponseEntity.ok().body("{\"message\":\"Usuario registrado con éxito\"}");
-    } catch (Exception e) {
-        return ResponseEntity.status(400).body("{\"error\":\"" + e.getMessage() + "\"}");
-    }
-}
+       // return ResponseEntity.ok().body("{\"token\":\"" + token + "\"}");
+   // }
+   // @PostMapping("/register")
+    //public ResponseEntity<?> register(@RequestBody @Valid UserRegistrationDTO dto) {
+   // try {
+     //   userService.registerUser(dto);
+      //  return ResponseEntity.ok().body("{\"message\":\"Usuario registrado con éxito\"}");
+   // } catch (Exception e) {
+     //   return ResponseEntity.status(400).body("{\"error\":\"" + e.getMessage() + "\"}");
+   // }
+//}
 
 
 }

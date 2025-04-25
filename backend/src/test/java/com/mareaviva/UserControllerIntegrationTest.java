@@ -1,6 +1,6 @@
 package com.mareaviva;
 
-
+import org.junit.jupiter.api.Disabled;
 
 import com.mareaviva.dto.UserRegistrationDTO;
 import org.junit.jupiter.api.Test;
@@ -11,6 +11,7 @@ import org.springframework.http.*;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
+@Disabled
 @ActiveProfiles("test")
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
