@@ -4,7 +4,9 @@ import jakarta.validation.Valid;
 import com.mareaviva.dto.LoginDTO;
 import com.mareaviva.model.User;
 import com.mareaviva.service.UserService;
-import com.util.JwtUtil;
+
+import com.mareaviva.util.JwtUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -39,14 +41,11 @@ public class AuthController {
     public ResponseEntity<?> register(@RequestBody @Valid UserRegistrationDTO dto) {
     try {
         userService.registerUser(dto);
-
-        // Autologin tras registro
-        String token = jwtUtil.generateToken(dto.getEmail());
-
-        return ResponseEntity.ok().body("{\"token\":\"" + token + "\"}");
+        return ResponseEntity.ok().body("{\"message\":\"Usuario registrado con éxito\"}");
     } catch (Exception e) {
         return ResponseEntity.status(400).body("{\"error\":\"" + e.getMessage() + "\"}");
     }
 }
+
 
 }

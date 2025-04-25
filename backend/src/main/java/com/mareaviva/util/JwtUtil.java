@@ -1,4 +1,5 @@
-package com.util;
+package com.mareaviva.util;
+
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

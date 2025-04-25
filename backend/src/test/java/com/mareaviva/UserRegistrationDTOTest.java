@@ -1,5 +1,6 @@
 
-package mareaviva.com.mareaviva;
+package com.mareaviva;
+
 
 import com.mareaviva.dto.UserRegistrationDTO;
 import org.junit.jupiter.api.Test;
