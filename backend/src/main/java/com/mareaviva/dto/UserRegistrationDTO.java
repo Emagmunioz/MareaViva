@@ -34,6 +34,9 @@ public class UserRegistrationDTO {
     @NotBlank
     private String password;
 
+    @NotBlank(message = "El rol no puede estar vacío") // 🚀 Nuevo campo para capturar el rol
+    private String role;
+
     // Getters and setters
 
     public String getFirstName() {
@@ -98,5 +101,13 @@ public class UserRegistrationDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
