@@ -18,10 +18,11 @@ public class User {
     private String phone;
     private String email;
     private String password;
+    private String role; // 🚀 Nuevo campo: usuario, voluntario o profesional
 
     public User() {}
 
-    public User(String firstName, String lastName, String city, String province, String dni, String phone, String email, String password) {
+    public User(String firstName, String lastName, String city, String province, String dni, String phone, String email, String password, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.city = city;
@@ -30,6 +31,7 @@ public class User {
         this.phone = phone;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
     // Getters and setters
@@ -100,5 +102,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

@@ -58,6 +58,9 @@ public class ProfileController {
             Files.copy(image.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
 
             profile.setImageUrl("/uploads/" + uniqueFilename);
+        } else {
+            // Asignar imagen por defecto si no sube ninguna
+            profile.setImageUrl("/default-profile.png");
         }
 
         return profileRepository.save(profile);
