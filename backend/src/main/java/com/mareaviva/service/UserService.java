@@ -25,7 +25,8 @@ public class UserService {
                 userDto.getDni(),
                 userDto.getPhone(),
                 userDto.getEmail(),
-                passwordEncoder.encode(userDto.getPassword()) // Importante: encriptar
+                passwordEncoder.encode(userDto.getPassword()), // Importante: encriptar
+                userDto.getRole() // 🚀 Añadido: ahora pasamos también el rol
         );
 
         userRepository.save(user);

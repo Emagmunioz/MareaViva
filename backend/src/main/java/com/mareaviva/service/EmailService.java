@@ -14,8 +14,14 @@ public class EmailService {
     public void sendContactNotification(String toEmail, String userName) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(toEmail);
-        message.setSubject("¡Nuevo contacto desde Marea Viva!");
-        message.setText("Hola, un usuario llamado " + userName + " quiere contactar contigo.\n\nConéctate al chat en: https://mareaviva.com/chat");
+        message.setSubject("🌊 Nuevo contacto en Marea Viva: " + userName + " quiere hablar contigo");
+        message.setText(
+            "Hola,\n\n" +
+            "Un usuario llamado " + userName + " quiere hablar contigo para recibir apoyo emocional.\n\n" +
+            "Por favor, conéctate cuanto antes al chat de Marea Viva para iniciar la conversación.\n\n" +
+            "Gracias por formar parte de nuestra red de apoyo. 💙\n\n" +
+            "Equipo de Marea Viva"
+        );
 
         mailSender.send(message);
     }
