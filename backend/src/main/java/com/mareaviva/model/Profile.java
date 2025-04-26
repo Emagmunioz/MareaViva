@@ -10,18 +10,23 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String firstName; // 🔥 NUEVO
+    private String lastName;  // 🔥 NUEVO
     private String role;
-
     @Column(columnDefinition = "TEXT")
     private String description;
-
     private String imageUrl;
-
     private LocalDateTime createdAt = LocalDateTime.now();
 
     // Getters y Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
+
+    public String getFirstName() { return firstName; }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+
+    public String getLastName() { return lastName; }
+    public void setLastName(String lastName) { this.lastName = lastName; }
 
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
