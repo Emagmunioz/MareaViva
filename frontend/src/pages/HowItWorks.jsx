@@ -7,10 +7,10 @@ import {
   HeartHandshake,
 } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom"; // <- Importante que esté
 import StepCard from "@/components/StepCard";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Link } from "react-router-dom";
 import EmergencyModal from "@/components/EmergencyModal";
 
 export default function HowItWorks() {
@@ -35,6 +35,7 @@ export default function HowItWorks() {
               color="text-teal-600"
             />
           </Link>
+          
           <Link to="/cuestionario">
             <StepCard
               Icon={ClipboardList}
@@ -43,12 +44,17 @@ export default function HowItWorks() {
               color="text-teal-600"
             />
           </Link>
-          <StepCard
-            Icon={Users}
-            title="3. Buscar apoyo"
-            description="Explora perfiles de voluntarios y solicita conexión."
-            color="text-teal-600"
-          />
+
+          {/* AQUI modificamos "Buscar apoyo" para que sea un enlace */}
+          <Link to="/seek-support">
+            <StepCard
+              Icon={Users}
+              title="3. Buscar apoyo"
+              description="Explora perfiles de voluntarios y solicita conexión."
+              color="text-teal-600"
+            />
+          </Link>
+
           <Link to="/chat">
             <StepCard
               Icon={MessageSquare}
@@ -57,6 +63,7 @@ export default function HowItWorks() {
               color="text-teal-600"
             />
           </Link>
+
           <button onClick={() => setShowModal(true)}>
             <StepCard
               Icon={AlertTriangle}
@@ -65,6 +72,7 @@ export default function HowItWorks() {
               color="text-orange-500"
             />
           </button>
+
           <Link to="/groups-form">
             <StepCard
               Icon={HeartHandshake}

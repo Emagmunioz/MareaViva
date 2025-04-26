@@ -13,6 +13,9 @@ import GroupsFormPage from "@/pages/GroupsFormPage";
 import VolunteersPage from "@/pages/VolunteersPage";
 import FoundationsPage from "@/pages/FoundationsPage";
 import ContactPage from "@/pages/ContactPage";
+import SeekSupportPage from "@/pages/SeekSupportPage";
+import NotFoundPage from "@/pages/NotFoundPage";
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -40,6 +43,8 @@ export default function App() {
         <Route path="/voluntarios" element={<VolunteersPage />} />
         <Route path="/profesionales" element={<FoundationsPage />} />
         <Route path="/contacto" element={<ContactPage />} />
+        <Route path="/seek-support" element={<SeekSupportPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

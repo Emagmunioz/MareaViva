@@ -12,4 +12,8 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  define: {
+    global: 'window', // 🛠️ Esto arregla el error de SockJS
+    'process.env': {}, // 🛠️ Opcional, por si alguna lib busca process.env
+  },
 });

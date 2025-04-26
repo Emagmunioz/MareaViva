@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import examenImage from "@/assets/Examen.png";
+import defaultProfileImage from "@/assets/Examen.png"; // Imagen por defecto si no suben ninguna
 
 export default function ProfileForm() {
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState(""); // usuario | voluntario
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const [profileImageUrl, setProfileImageUrl] = useState("");
@@ -16,7 +16,7 @@ export default function ProfileForm() {
     e.preventDefault();
 
     if (!role) {
-      setMessage("Por favor selecciona si eres Usuario o Voluntario.");
+      setMessage("Por favor, selecciona si eres Usuario o Voluntario.");
       return;
     }
 
@@ -38,7 +38,9 @@ export default function ProfileForm() {
         setMessage("¡Perfil guardado con éxito! 🎉");
 
         if (data.imageUrl) {
-          setProfileImageUrl(examenImage); // de momento no servimos imágenes reales
+          setProfileImageUrl(data.imageUrl); // Aquí debería ser la imagen real si sirves imágenes
+        } else {
+          setProfileImageUrl(defaultProfileImage);
         }
 
         // Espera 2 segundos y redirige
@@ -60,13 +62,13 @@ export default function ProfileForm() {
 
       <main className="flex-grow max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
         <img
-          src={profileImageUrl || examenImage}
-          alt="Perfil"
+          src={profileImageUrl || defaultProfileImage}
+          alt="Foto de perfil"
           className="rounded-xl shadow-lg w-full object-cover"
         />
 
         <div className="bg-white rounded-xl shadow p-6">
-          <h2 className="text-2xl font-semibold mb-4 text-center text-coral-700">Perfil de Usuario</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-center text-coral-700">Crear Perfil</h2>
 
           {message && (
             <div className="text-center mb-4 p-2 rounded bg-green-100 text-green-700">
@@ -112,7 +114,7 @@ export default function ProfileForm() {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 className="w-full p-2 border rounded-lg min-h-[120px]"
-                placeholder="Cuéntanos algo sobre ti..."
+                placeholder="Cuéntanos sobre ti..."
                 required
               />
             </div>
