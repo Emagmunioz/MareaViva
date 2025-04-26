@@ -2,41 +2,56 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-// import axios from "axios";
 import examenImage from "@/assets/Examen.png";
 
 export default function ProfileForm() {
   const [role, setRole] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
+  const [profileImageUrl, setProfileImageUrl] = useState("");
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!role) {
+      setMessage("Por favor selecciona si eres Usuario o Voluntario.");
+      return;
+    }
 
     const formData = new FormData();
     formData.append("role", role);
     formData.append("description", description);
     if (image) formData.append("image", image);
 
-    // Simulación de respuesta exitosa para pruebas locales
-    setTimeout(() => {
-      console.log("Perfil guardado (simulado):", {
-        role,
-        description,
-        image: image?.name || "N/A",
+    try {
+      const res = await fetch("http://localhost:8080/api/profile", {
+        method: "POST",
+        body: formData,
       });
-      navigate("/dashboard");
-    }, 1000);
 
-    // try {
-    //   await axios.post("http://localhost:8080/api/profile", formData, {
-    //     headers: { "Content-Type": "multipart/form-data" },
-    //   });
-    //   navigate("/dashboard");
-    // } catch (error) {
-    //   alert("Error al guardar el perfil");
-    // }
+      if (res.ok) {
+        const data = await res.json();
+        console.log("Perfil guardado:", data);
+
+        setMessage("¡Perfil guardado con éxito! 🎉");
+
+        if (data.imageUrl) {
+          setProfileImageUrl(examenImage); // de momento no servimos imágenes reales
+        }
+
+        // Espera 2 segundos y redirige
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
+      } else {
+        setMessage("Error al guardar el perfil.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setMessage("No se pudo conectar con el servidor.");
+    }
   };
 
   return (
@@ -44,10 +59,20 @@ export default function ProfileForm() {
       <Header />
 
       <main className="flex-grow max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
-        <img src={examenImage} alt="Perfil" className="rounded-xl shadow-lg w-full object-cover" />
+        <img
+          src={profileImageUrl || examenImage}
+          alt="Perfil"
+          className="rounded-xl shadow-lg w-full object-cover"
+        />
 
         <div className="bg-white rounded-xl shadow p-6">
           <h2 className="text-2xl font-semibold mb-4 text-center text-coral-700">Perfil de Usuario</h2>
+
+          {message && (
+            <div className="text-center mb-4 p-2 rounded bg-green-100 text-green-700">
+              {message}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="flex justify-center gap-4">
