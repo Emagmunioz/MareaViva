@@ -1,16 +1,13 @@
 com\mareaviva\controller\AuthController.class
 com\mareaviva\model\ChatMessage.class
 com\mareaviva\controller\ProfileController.class
-com\mareaviva\controller\CollaboratorController.class
 com\mareaviva\dto\UserRegistrationDTO.class
 com\mareaviva\model\Collaborator.class
 com\mareaviva\repository\ProfileRepository.class
 com\mareaviva\controller\UserController.class
-com\mareaviva\service\EmailService.class
 com\mareaviva\service\UserService.class
 com\mareaviva\repository\CollaboratorRepository.class
 com\mareaviva\model\User.class
-com\mareaviva\service\CollaboratorService.class
 com\mareaviva\config\WebSocketConfig.class
 com\mareaviva\controller\PingController.class
 com\mareaviva\config\WebConfig.class

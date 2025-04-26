@@ -36,8 +36,18 @@ public class CollaboratorController {
         if (collaborator == null) {
             return "Colaborador no encontrado.";
         }
-        // Enviar email al voluntario
-        emailService.sendContactNotification(collaborator.getEmail(), userName);
-        return "Se ha enviado un email al voluntario.";
+    
+        String collaboratorName = collaborator.getName();
+        String collaboratorMessage = collaborator.getDescription();
+    
+        // Enviar email al admin (o donde quieras)
+        emailService.sendCollaborationRequest(
+            "emagmunioz@gmail.com",
+            collaboratorName,
+            collaboratorMessage
+        );
+    
+        return "Se ha enviado un email al administrador.";
     }
+    
 }

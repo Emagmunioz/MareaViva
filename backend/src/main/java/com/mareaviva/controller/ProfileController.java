@@ -64,9 +64,34 @@ public class ProfileController {
         return profileRepository.save(profile);
     }
 
-    // 🔥 NUEVO: GET: Listar todos los perfiles
+    // 🔥 GET: Listar todos los perfiles
     @GetMapping("/all")
     public List<Profile> getAllProfiles() {
         return profileRepository.findAll();
+    }
+
+    // 🔥 PUT: Modificar un perfil
+    @PutMapping("/{id}")
+    public Profile updateProfile(@PathVariable Long id, @RequestBody Profile updatedProfile) {
+        return profileRepository.findById(id)
+                .map(profile -> {
+                    profile.setFirstName(updatedProfile.getFirstName());
+                    profile.setLastName(updatedProfile.getLastName());
+                    profile.setRole(updatedProfile.getRole());
+                    profile.setDescription(updatedProfile.getDescription());
+                    profile.setImageUrl(updatedProfile.getImageUrl());
+                    return profileRepository.save(profile);
+                })
+                .orElseThrow(() -> new RuntimeException("Perfil no encontrado con ID: " + id));
+    }
+
+    // 🔥 DELETE: Eliminar un perfil
+    @DeleteMapping("/{id}")
+    public String deleteProfile(@PathVariable Long id) {
+        if (!profileRepository.existsById(id)) {
+            throw new RuntimeException("Perfil no encontrado con ID: " + id);
+        }
+        profileRepository.deleteById(id);
+        return "Perfil eliminado correctamente.";
     }
 }
