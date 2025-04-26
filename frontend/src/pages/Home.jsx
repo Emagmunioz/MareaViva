@@ -1,7 +1,6 @@
 import Header from "../components/Header";
 import Section from "../components/Section";
 import Cards from "../components/Cards";
-import ContactForm from "../components/ContactForm";
 import Footer from "../components/Footer";
 import ParticipaApoyaSection from "../components/ParticipaApoyaSection";
 import supportImage from "../assets/emotional-support.png";
