@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Register from "./Register";
-// import Login from "./Login";
-import Dashboard from "./Dashboard";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import Home from "./pages/Home";
 import HowItWorks from "./pages/HowItWorks";
@@ -13,16 +13,16 @@ import GroupsFormPage from "@/pages/GroupsFormPage";
 import VolunteersPage from "@/pages/VolunteersPage";
 import FoundationsPage from "@/pages/FoundationsPage";
 import ContactPage from "@/pages/ContactPage";
-import SeekSupportPage from "@/pages/SeekSupportPage";
+import SeekSupport from "@/pages/SeekSupport";
 import NotFoundPage from "@/pages/NotFoundPage";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Estas rutas están comentadas hasta que vuelvas a agregar los archivos */}
-        {/* <Route path="/register" element={<Register />} /> */}
-        {/* <Route path="/login" element={<Login />} /> */}
+       
+         <Route path="/register" element={<Register />} /> 
+         <Route path="/login" element={<Login />} /> 
 
         <Route path="/" element={<Home />} />
         <Route
@@ -43,7 +43,7 @@ export default function App() {
         <Route path="/voluntarios" element={<VolunteersPage />} />
         <Route path="/profesionales" element={<FoundationsPage />} />
         <Route path="/contacto" element={<ContactPage />} />
-        <Route path="/seek-support" element={<SeekSupportPage />} />
+        <Route path="/seek-support" element={<SeekSupport />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>

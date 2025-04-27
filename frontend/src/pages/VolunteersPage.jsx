@@ -7,7 +7,7 @@ export default function VolunteersPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-gradient-to-b from-[#f1f4f3] to-[#c7d3d2] min-h-screen flex flex-col font-['Poppins'] text-black">
+    <div className="bg-gradient-to-b from-[#D0F1FD] to-[#2980b9] min-h-screen flex flex-col font-['Poppins'] text-black">
       <Header />
 
       <main className="flex-grow max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
@@ -36,7 +36,7 @@ export default function VolunteersPage() {
 
           <button
             onClick={() => navigate("/profile-form")}
-            className="bg-teal-500 text-white font-semibold px-6 py-3 rounded-full hover:bg-teal-600 transition"
+            className="bg-[#f7b733] hover:bg-[#f6a21e] text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg"
           >
             Quiero ser voluntario
           </button>

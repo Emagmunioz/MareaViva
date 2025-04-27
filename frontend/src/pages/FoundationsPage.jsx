@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"; // 🔥 Importante para navegación interna
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -36,7 +37,7 @@ export default function FoundationsPage() {
   ];
 
   return (
-    <div className="font-['Poppins'] text-black bg-gradient-to-b from-[#f1f4f3] to-[#c7d3d2] min-h-screen flex flex-col">
+    <div className="font-['Poppins'] text-black bg-gradient-to-b from-[#D0F1FD] to-[#2980b9] min-h-screen flex flex-col">
       <Header />
 
       <main className="flex-grow max-w-6xl mx-auto px-6 py-12">
@@ -47,6 +48,16 @@ export default function FoundationsPage() {
           Si eres psicólogo, terapeuta o representante de una asociación, puedes formar parte de Marea Viva. Nuestra plataforma impulsa la salud emocional conectando personas que necesitan apoyo con profesionales comprometidos. Únete como colaborador o patrocinador y contribuye a una sociedad más empática y saludable. 
           Potencia tu visibilidad, participa en acciones solidarias y ayuda a transformar vidas.
         </p>
+
+        {/* 🔥 Botón para ir a la página de contacto */}
+        <div className="flex justify-center mb-12">
+          <Link
+            to="/contacto"
+            className="bg-[#f7b733] hover:bg-[#f6a21e] text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg"
+          >
+            Quiero colaborar
+          </Link>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {partners.map((partner, i) => (

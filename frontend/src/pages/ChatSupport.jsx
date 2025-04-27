@@ -46,17 +46,18 @@ export default function ChatSupport() {
   const sendMessage = (e) => {
     e.preventDefault();
     if (!input.trim() || !stompClient) return;
-
-    const message = { from: "usuario", text: input };
-
+  
+  const message = { from: "user", text: input };
+  
     stompClient.publish({
       destination: "/app/sendMessage",
       body: JSON.stringify(message),
     });
-
-    setMessages((prevMessages) => [...prevMessages, { text: input, from: "user" }]);
-    setInput("");
+  
+    setInput(""); // 🔥 Solo limpiamos el input, no agregamos el mensaje manualmente
   };
+  
+  
 
   return (
     <div className="flex flex-col min-h-screen font-['Poppins'] bg-[#c7fcfc]">

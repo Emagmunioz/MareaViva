@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import defaultProfileImage from "@/assets/Examen.png"; // Imagen por defecto si no suben ninguna
 
 export default function ProfileForm() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [role, setRole] = useState(""); // usuario | voluntario
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
@@ -21,6 +23,8 @@ export default function ProfileForm() {
     }
 
     const formData = new FormData();
+    formData.append("firstName", firstName);
+    formData.append("lastName", lastName);
     formData.append("role", role);
     formData.append("description", description);
     if (image) formData.append("image", image);
@@ -38,12 +42,11 @@ export default function ProfileForm() {
         setMessage("¡Perfil guardado con éxito! 🎉");
 
         if (data.imageUrl) {
-          setProfileImageUrl(data.imageUrl); // Aquí debería ser la imagen real si sirves imágenes
+          setProfileImageUrl(data.imageUrl);
         } else {
           setProfileImageUrl(defaultProfileImage);
         }
 
-        // Espera 2 segundos y redirige
         setTimeout(() => {
           navigate("/dashboard");
         }, 2000);
@@ -57,7 +60,7 @@ export default function ProfileForm() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-[#f1f4f3] to-[#c7d3d2] min-h-screen flex flex-col font-['Poppins'] text-black">
+    <div className="bg-gradient-to-b from-[#D0F1FD] to-[#2980b9] min-h-screen flex flex-col font-['Poppins'] text-black">
       <Header />
 
       <main className="flex-grow max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
@@ -96,6 +99,31 @@ export default function ProfileForm() {
               >
                 Voluntario
               </button>
+            </div>
+
+            {/* Campos nuevos de Nombre y Apellido */}
+            <div>
+              <label className="block mb-1 font-medium">Nombre</label>
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="w-full p-2 border rounded-lg"
+                placeholder="Tu nombre"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block mb-1 font-medium">Apellido</label>
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="w-full p-2 border rounded-lg"
+                placeholder="Tu apellido"
+                required
+              />
             </div>
 
             <div>

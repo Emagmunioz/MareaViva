@@ -9,7 +9,7 @@ import davidImage from "../assets/david.png";
 
 export default function Home() {
   return (
-    <div className="font-['Poppins'] text-black bg-gradient-to-b from-[#f1f4f3] to-[#96b3b1] min-h-screen">
+    <div className="font-['Poppins'] text-black bg-gradient-to-b from-[#D0F1FD] to-[#2980b9] min-h-screen">
       <Header />
 
       {/* Sección introductoria */}

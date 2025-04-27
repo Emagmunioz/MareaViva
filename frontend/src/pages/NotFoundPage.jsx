@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function NotFoundPage() {
   return (
-    <div className="bg-gradient-to-b from-[#f1f4f3] to-[#c7d3d2] min-h-screen flex flex-col font-['Poppins'] text-black">
+    <div className="bg-gradient-to-b from-[#D0F1FD] to-[#2980b9] min-h-screen flex flex-col font-['Poppins'] text-black">
       <Header />
 
       <main className="flex-grow flex flex-col items-center justify-center px-6 text-center">

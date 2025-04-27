@@ -17,7 +17,7 @@ export default function HowItWorks() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="font-['Poppins'] text-black bg-gradient-to-b from-[#f1f4f3] to-[#c7d3d2] min-h-screen flex flex-col">
+    <div className="font-['Poppins'] text-black bg-gradient-to-b from-[#D0F1FD] to-[#2980b9] min-h-screen flex flex-col">
       <Header />
 
       <main className="py-12 px-4 max-w-5xl mx-auto flex-grow">

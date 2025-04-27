@@ -20,7 +20,7 @@ export default function EmotionEvaluation() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-['Poppins'] text-black bg-gradient-to-b from-[#f1f4f3] to-[#c7d3d2]">
+    <div className="min-h-screen flex flex-col font-['Poppins'] text-black bg-gradient-to-b from-[#D0F1FD] to-[#2980b9]">
       <Header />
 
       <main className="flex-grow max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
