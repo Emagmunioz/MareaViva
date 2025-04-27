@@ -2,17 +2,34 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import defaultProfileImage from "@/assets/Examen.png"; // Imagen por defecto si no suben ninguna
+import defaultProfileImage from "@/assets/Examen.png"; // Imagen por defecto
 
 export default function ProfileForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [role, setRole] = useState(""); // usuario | voluntario
+  const [role, setRole] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
-  const [profileImageUrl, setProfileImageUrl] = useState("");
+  const [profileImageUrl, setProfileImageUrl] = useState(defaultProfileImage);
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfileImageUrl(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setImage(null);
+    setProfileImageUrl(defaultProfileImage);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,11 +81,13 @@ export default function ProfileForm() {
       <Header />
 
       <main className="flex-grow max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-2 gap-10 items-center">
-        <img
-          src={profileImageUrl || defaultProfileImage}
-          alt="Foto de perfil"
-          className="rounded-xl shadow-lg w-full object-cover"
-        />
+        <div>
+          <img
+            src={profileImageUrl}
+            alt="Foto de perfil"
+            className="rounded-xl shadow-lg w-full object-cover"
+          />
+        </div>
 
         <div className="bg-white rounded-xl shadow p-6">
           <h2 className="text-2xl font-semibold mb-4 text-center text-coral-700">Crear Perfil</h2>
@@ -101,7 +120,6 @@ export default function ProfileForm() {
               </button>
             </div>
 
-            {/* Campos nuevos de Nombre y Apellido */}
             <div>
               <label className="block mb-1 font-medium">Nombre</label>
               <input
@@ -131,9 +149,18 @@ export default function ProfileForm() {
               <input
                 type="file"
                 accept="image/*"
-                onChange={(e) => setImage(e.target.files[0])}
+                onChange={handleImageChange}
                 className="w-full text-sm"
               />
+              {image && (
+                <button
+                  type="button"
+                  onClick={handleRemoveImage}
+                  className="mt-2 text-red-500 underline text-sm"
+                >
+                  Eliminar foto
+                </button>
+              )}
             </div>
 
             <div>

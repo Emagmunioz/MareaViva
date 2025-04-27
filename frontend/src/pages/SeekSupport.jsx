@@ -6,7 +6,8 @@ import Footer from "@/components/Footer";
 export default function SeekSupport() {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [contacting, setContacting] = useState(false); // 🔥 Para bloquear múltiples clics
+  const [contacting, setContacting] = useState(false);
+  const [filterRole, setFilterRole] = useState("voluntario"); // 🔥 Nuevo: selecciona "voluntario" o "usuario"
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -28,10 +29,10 @@ export default function SeekSupport() {
     fetchProfiles();
   }, []);
 
-  const volunteerProfiles = profiles.filter(profile => profile.role === "voluntario");
+  const filteredProfiles = profiles.filter(profile => profile.role === filterRole);
 
   const handleContact = async (profileId) => {
-    if (contacting) return; // 🔥 Evitar múltiples clics mientras contacta
+    if (contacting) return;
 
     setContacting(true);
 
@@ -45,14 +46,13 @@ export default function SeekSupport() {
       });
 
       if (!res.ok) {
-        throw new Error("Error al contactar al voluntario");
+        throw new Error("Error al contactar");
       }
 
-      // ✅ Email enviado correctamente, ahora redirigimos al chat
       navigate("/chat");
     } catch (error) {
-      console.error("Error al contactar al voluntario:", error);
-      alert("Hubo un problema al contactar al voluntario. Intenta de nuevo.");
+      console.error("Error al contactar:", error);
+      alert("Hubo un problema al contactar. Intenta de nuevo.");
     } finally {
       setContacting(false);
     }
@@ -65,16 +65,42 @@ export default function SeekSupport() {
       <Header />
 
       <main className="flex-grow py-12 px-6 max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-10 text-coral-700">Encuentra apoyo</h2>
+        <h2 className="text-3xl font-bold text-center mb-10 text-coral-700">
+          Encuentra apoyo
+        </h2>
+
+        {/* 🔥 Nuevo: Selector entre voluntarios y usuarios */}
+        <div className="flex justify-center mb-10">
+          <button
+            onClick={() => setFilterRole("voluntario")}
+            className={`px-4 py-2 mx-2 rounded-full font-semibold ${
+              filterRole === "voluntario"
+                ? "bg-teal-500 text-white"
+                : "bg-white text-teal-600 border border-teal-500"
+            }`}
+          >
+            Voluntarios
+          </button>
+          <button
+            onClick={() => setFilterRole("usuario")}
+            className={`px-4 py-2 mx-2 rounded-full font-semibold ${
+              filterRole === "usuario"
+                ? "bg-teal-500 text-white"
+                : "bg-white text-teal-600 border border-teal-500"
+            }`}
+          >
+            Usuarios
+          </button>
+        </div>
 
         {loading ? (
           <div className="flex justify-center items-center min-h-[50vh]">
-            <p className="text-teal-600 text-xl font-semibold animate-pulse">Cargando voluntarios...</p>
+            <p className="text-teal-600 text-xl font-semibold animate-pulse">Cargando perfiles...</p>
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {volunteerProfiles.length > 0 ? (
-              volunteerProfiles.map((profile) => (
+            {filteredProfiles.length > 0 ? (
+              filteredProfiles.map((profile) => (
                 <div
                   key={profile.id}
                   className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:shadow-2xl transition"
@@ -90,7 +116,7 @@ export default function SeekSupport() {
                   <p className="text-gray-700 mt-2 mb-6">{profile.description}</p>
                   <button
                     onClick={() => handleContact(profile.id)}
-                    disabled={contacting} // 🔥 Deshabilita si ya está contactando
+                    disabled={contacting}
                     className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-6 rounded-full transition disabled:opacity-50"
                   >
                     {contacting ? "Conectando..." : "Contactar"}
@@ -99,7 +125,7 @@ export default function SeekSupport() {
               ))
             ) : (
               <p className="text-center col-span-4 text-gray-500">
-                No hay voluntarios disponibles en este momento. ¡Vuelve más tarde!
+                No hay perfiles disponibles. ¡Vuelve más tarde!
               </p>
             )}
           </div>

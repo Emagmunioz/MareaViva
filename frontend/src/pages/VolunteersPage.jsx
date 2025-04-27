@@ -1,86 +1,50 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import api from "@/services/api";
-import Modal from "@/components/Modal";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import practicas from "@/assets/practicas.png"; // Asegúrate que esté bien importado
 
-export default function Login() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const [modal, setModal] = useState({ open: false, message: "", type: "success", action: null });
+export default function VolunteersPage() {
   const navigate = useNavigate();
-
-  const onSubmit = async (data) => {
-    try {
-      const response = await api.post("/auth/login", data);
-      const token = response.data.token;
-      localStorage.setItem("token", token);
-
-      // Al éxito, mostrar modal con botón para volver a Home
-      setModal({
-        open: true,
-        message: "¡Inicio de sesión exitoso!",
-        type: "success",
-        action: () => navigate("/") // función para redirigir a home
-      });
-
-    } catch (error) {
-      const msg = error.response?.data?.message || error.response?.data || "Error al iniciar sesión. Intenta nuevamente.";
-      setModal({ open: true, message: msg, type: "error", action: null });
-    }
-  };
 
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
 
-      <main className="flex-grow bg-gradient-to-b from-[#D0F1FD] to-[#2980b9] flex items-center justify-center p-4">
-        <form
-          onSubmit={handleSubmit(onSubmit)}
-          className="bg-white p-6 rounded-xl shadow-lg w-full max-w-md border border-[#30CFC0]"
-        >
-          <h2 className="text-xl font-bold mb-4 text-center text-gray-800">Iniciar sesión</h2>
+      <main className="flex-grow bg-gradient-to-b from-[#D0F1FD] to-[#2980b9] flex items-center justify-center p-6">
+        <div className="bg-white rounded-xl shadow-lg overflow-hidden grid md:grid-cols-2 max-w-6xl w-full">
 
-          <input
-            type="email"
-            {...register("email", { required: "Correo obligatorio" })}
-            placeholder="Correo electrónico"
-            className="bg-[#A0E4E4] input mb-2"
-          />
-          {errors.email && <p className="text-sm text-red-600">{errors.email.message}</p>}
+          {/* Columna Izquierda: Imagen */}
+          <div className="flex items-center justify-center bg-[#A0E4E4] p-6">
+            <img
+              src={practicas}
+              alt="Prácticas de Voluntariado"
+              className="w-full h-auto rounded-lg shadow-md object-cover"
+            />
+          </div>
 
-          <input
-            type="password"
-            {...register("password", { required: "Contraseña obligatoria" })}
-            placeholder="Contraseña"
-            className="bg-[#A0E4E4] input mb-4"
-          />
-          {errors.password && <p className="text-sm text-red-600">{errors.password.message}</p>}
+          {/* Columna Derecha: Texto + Botón */}
+          <div className="flex flex-col justify-center items-center p-8">
+            <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
+              ¡Únete a nuestra red de voluntarios!
+            </h1>
 
-          <button
-            type="submit"
-            className="w-full bg-[#F7B733] hover:bg-[#f5a623] text-white font-semibold py-2 rounded-xl transition duration-300"
-          >
-            Iniciar sesión
-          </button>
-        </form>
+            <p className="text-gray-700 mb-8 text-center">
+              Si eres estudiante, jubilado o desempleado en Psicología o Psiquiatría,
+              tienes la oportunidad de marcar una diferencia real en la vida de las personas. 💙
+              <br /><br />
+              ¡Participa en nuestra comunidad de apoyo y crecimiento!
+            </p>
 
-        {modal.open && (
-          <Modal
-            message={modal.message}
-            type={modal.type}
-            onClose={() => {
-              if (modal.action) {
-                modal.action(); // 🔥 Ejecutar acción si existe
-              }
-              setModal({ ...modal, open: false });
-            }}
-            bgColor="#DBCACA"
-            buttonColor="#f6a21e" // 🔥 Cambiamos el color del botón
-            buttonText="Ir a Inicio" // 🔥 Texto personalizado
-          />
-        )}
+            <button
+              onClick={() => navigate("/profile-form")}
+              className="bg-[#2ccfcf] hover:bg-[#26b0b0] text-white px-6 py-3 rounded-full font-semibold transition"
+            >
+              Quiero ser voluntario
+            </button>
+          </div>
+
+        </div>
       </main>
 
       <Footer />

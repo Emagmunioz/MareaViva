@@ -26,11 +26,11 @@ export default function Header() {
         {/* Menú máximo ancho */}
         <div className="flex-1 flex justify-end">
           <nav className="hidden md:flex gap-6 items-center text-sm font-medium">
-            <Link to="/" className="hover:underline">Inicio</Link>
-            <Link to="/como-funciona" className="hover:underline">Cómo funciona</Link>
-            <Link to="/voluntarios" className="hover:underline">Voluntarios</Link>
-            <Link to="/profesionales" className="hover:underline">Profesionales</Link>
-            <Link to="/contacto" className="hover:underline">Contacto</Link>
+            <Link to="/home" className="hover:underline">Inicio</Link>
+            <Link to="/how-it-works" className="hover:underline">Cómo funciona</Link>
+            <Link to="/volunteers" className="hover:underline">Voluntarios</Link>
+            <Link to="/foundations" className="hover:underline">Profesionales</Link>
+            <Link to="/contact" className="hover:underline">Contacto</Link>
             <Link 
               to="/login" 
               className="bg-white text-[#2ccfcf] px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition"
@@ -70,11 +70,11 @@ export default function Header() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden flex flex-col gap-3 mt-4 text-sm font-medium text-center">
-          <Link to="/" onClick={() => setMenuOpen(false)}>Inicio</Link>
-          <Link to="/como-funciona" onClick={() => setMenuOpen(false)}>Cómo funciona</Link>
-          <Link to="/voluntarios" onClick={() => setMenuOpen(false)}>Voluntarios</Link>
-          <Link to="/profesionales" onClick={() => setMenuOpen(false)}>Profesionales</Link>
-          <Link to="/contacto" onClick={() => setMenuOpen(false)}>Contacto</Link>
+          <Link to="/home" onClick={() => setMenuOpen(false)}>Inicio</Link>
+          <Link to="/how-it-works" onClick={() => setMenuOpen(false)}>Cómo funciona</Link>
+          <Link to="/volunteers" onClick={() => setMenuOpen(false)}>Voluntarios</Link>
+          <Link to="/foundations" onClick={() => setMenuOpen(false)}>Profesionales</Link>
+          <Link to="/contact" onClick={() => setMenuOpen(false)}>Contacto</Link>
           <Link 
             to="/login" 
             className="bg-white text-[#2ccfcf] px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition" 
