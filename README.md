@@ -4,115 +4,106 @@
 
 # 🌊 Marea Viva - Plataforma de Apoyo Emocional
 
-Backend de la plataforma **Marea Viva**, donde usuarios, voluntarios y profesionales se conectan para brindar acompañamiento emocional, a través de formularios, perfiles, email automático y chats en tiempo real.
+Plataforma completa construida con **Java + Spring Boot** en el backend y **React + TailwindCSS** en el frontend.  
+Marea Viva conecta usuarios, voluntarios y profesionales para brindar apoyo emocional en tiempo real.
 
-## 🚀 Tecnologías Usadas
+# 🚀 Tecnologías Usadas
 
-**Backend:**
+## Backend
 - Java 17
 - Spring Boot 3
-- Spring Web
 - Spring Security (JWT)
 - Spring Data JPA (MySQL)
-- JavaMailSender (Correo SMTP)
+- JavaMailSender (SMTP Email)
 - WebSocket (Chat en tiempo real)
+- JUnit 5, Mockito, MockMvc (Testing)
 
-**Testing:**
-- JUnit 5
-- Mockito
-- Spring Boot Test (MockMvc)
-- Jackson + JavaTimeModule (Serialización JSON)
+## Frontend
+- React 18
+- Vite
+- TailwindCSS 3
+- React Hook Form
+- React Router DOM
+- Axios
 
----
 
-## 📚 Estructura del Proyecto
+# 📂 Estructura del Proyecto
 
+## Backend (Spring Boot)
 ```
 backend/
 ├── config/         # Configuraciones de seguridad y WebSocket
-├── controller/     # Controladores REST (Auth, Chat, Profile, Contact, Collaborator)
-├── dto/            # Objetos de transferencia (UserRegistration, LoginRequest)
+├── controller/     # APIs públicas (Auth, Chat, Profile, Contact, Collaborators)
+├── dto/            # Data Transfer Objects
 ├── model/          # Entidades JPA (User, Profile, Collaborator, GroupProposal)
-├── repository/     # Interfaces JPA
-├── service/        # Servicios (UserService, EmailService, CollaboratorService)
-├── util/           # Utilidades (JWT Token)
-├── exception/      # Manejador Global de Errores
+├── repository/     # Interfaces de persistencia
+├── service/        # Servicios de negocio (UserService, EmailService, etc.)
+├── util/           # Utilidades (JWT)
+├── exception/      # Global Exception Handler
 └── Application.java
+```
+
+## Frontend (React + Tailwind)
+```
+frontend/
+├── components/      # Componentes de UI reutilizables (Cards, Header, Footer)
+├── pages/           # Pages principales (Register, Login, HomePage, etc.)
+├── services/        # Archivo api.js para llamadas a backend
+├── assets/          # Imágenes y recursos
+├── router/          # PrivateRoute para rutas protegidas
+├── App.jsx          # Configuración principal de rutas
+└── vite.config.js   # Configuración de Vite
 ```
 
 ---
 
-## 🔥 Principales Funcionalidades
+# ⚙️ Cómo levantar el proyecto localmente
 
-- Registro seguro de usuarios con rol dinámico (usuario, voluntario, profesional).
-- Creación de perfiles públicos para usuarios y voluntarios.
-- Envío de formularios de colaboración de profesionales y grupos.
-- Email automáticos para conexión entre usuarios-voluntarios.
-- Chat en tiempo real mediante WebSocket.
-- Autenticación segura mediante JWT tokens.
+## Backend
+```bash
+cd backend
+./mvnw spring-boot:run
+```
+Backend activo en `http://localhost:8080`
 
----
+Asegúrate de tener un archivo `application.properties` correctamente configurado para MySQL y Email.
 
-## ✅ Historias de Usuario y Criterios de Aceptación
+## Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Frontend activo en `http://localhost:5173`
 
-### 🏠 HomePage
-**Historia:** Conocer el propósito de Marea Viva, pilares, testimonios y participar.
-- Sección introductoria.
-- Cards para usuarios, voluntarios y profesionales.
-- "Sobre Nosotros", "Impacto Social" y "Participa".
-- Header y Footer accesibles.
+### Variables de entorno (opcional)
+- Si usas `.env`, definir `VITE_API_URL=http://localhost:8080/api`
 
-### 🔍 HowItWorks
-**Historia:** Entender pasos del proceso de acompañamiento.
-- 6 pasos con StepCards.
-- Enlaces funcionales.
-- Modal SOS y grid responsivo.
 
-### 👤 ProfileForm
-**Historia:** Completar perfil con rol, foto y descripción.
-- Elección de rol.
-- Subida de imagen.
-- Guardado de perfil.
-- Redirección a Dashboard.
+# 🔐 Seguridad
+- **Login** usando JWT Tokens.
+- **Token** almacenado en `localStorage`.
+- **PrivateRoute.jsx** protege rutas que requieren autenticación.
 
-### 📋 EmotionEvaluation
-**Historia:** Completar cuestionario emocional.
-- Preguntas emocionales.
-- Activar modal en señales de riesgo.
-- Redirección a Chat.
 
-### 💬 ChatSupport
-**Historia:** Comunicación en tiempo real con un voluntario.
-- Chat funcional.
-- Scroll automático.
+# ✅ Historias de Usuario y Criterios de Aceptación
 
-### 🤝 GroupsFormPage
-**Historia:** Inscripción en sesiones grupales.
-- Formulario simple.
-- Confirmación textual.
+Se incluyen flujos completos como:
+- Registro de usuarios, voluntarios y profesionales.
+- Creación de perfiles públicos.
+- Envío de formularios de colaboración.
+- Contacto voluntario vía Email.
+- Chat de soporte emocional.
+- Inscripción en grupos.
 
-### 🙋‍♂️ VolunteersPage
-**Historia:** Información y motivación para voluntarios.
-- Texto inspirador y botón a ProfileForm.
 
-### 🧑‍⚕️ FoundationsPage
-**Historia:** Información para profesionales y fundaciones.
-- Cards de alianzas.
-- Texto explicativo.
 
-### 📩 ContactPage
-**Historia:** Contactar al equipo o apoyar económicamente.
-- Formulario de contacto.
-- Integración con ParticipaApoyaSection.
+# 🧪 Testing
 
----
-
-## 🧪 Testing
-
-- Tests unitarios para Controladores, Servicios, Modelos y Utilidades.
-- Cobertura total de código de más del **93%**.
-- Testeados casos exitosos y errores controlados.
-
+## Backend
+- Tests unitarios para Controladores, Servicios y Modelos.
+- Cobertura de código: **>93%** líneas cubiertas.
+- Frameworks usados: **JUnit 5**, **Mockito**, **MockMvc**.
 
 ```bash
 ./mvnw test
@@ -120,14 +111,16 @@ backend/
 
 ---
 
-## 📬 Contacto
+# 📬 Contacto
 
-¿Comentarios o sugerencias?  
+¿Comentarios, mejoras o colaboración?  
 📩 **emagmunioz@gmail.com** 💙
 
 ---
 
-## 📜 Licencia
+# 📜 Licencia
 
-Código abierto bajo licencia MIT License.
+Código abierto bajo licencia MIT.
+
+---
 
