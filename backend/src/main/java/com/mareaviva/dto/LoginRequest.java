@@ -9,6 +9,11 @@ public class LoginRequest {
     @Email
     private String email;
 
+    public LoginRequest(@NotBlank @Email String email, @NotBlank String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     @NotBlank
     private String password;
 

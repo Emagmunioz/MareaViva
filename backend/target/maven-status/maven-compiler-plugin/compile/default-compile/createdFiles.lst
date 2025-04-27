@@ -11,7 +11,6 @@ com\mareaviva\repository\CollaboratorRepository.class
 com\mareaviva\model\User.class
 com\mareaviva\service\CollaboratorService.class
 com\mareaviva\config\WebSocketConfig.class
-com\mareaviva\controller\PingController.class
 com\mareaviva\config\WebConfig.class
 com\mareaviva\repository\UserRepository.class
 com\mareaviva\util\JwtUtil.class
