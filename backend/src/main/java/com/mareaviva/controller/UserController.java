@@ -3,6 +3,8 @@ package com.mareaviva.controller;
 import com.mareaviva.dto.UserRegistrationDTO;
 import com.mareaviva.model.User;
 import com.mareaviva.repository.UserRepository;
+import com.mareaviva.service.UserService;
+
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,12 +16,12 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private  UserService userService;
 
     @PostMapping
     public ResponseEntity<String> registerUser(@Valid @RequestBody UserRegistrationDTO userDto) {
         // Validar si el email ya existe
-        if (userRepository.findByEmail(userDto.getEmail()) != null) {
+        if (userService.findByEmail(userDto.getEmail()) != null) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("El email ya está registrado.");
         }
 
@@ -37,7 +39,7 @@ public class UserController {
         );
 
         // Guardarlo en la base de datos
-        userRepository.save(newUser);
+        userService.registerUser(userDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Usuario registrado exitosamente: " + newUser.getFirstName());
     }
