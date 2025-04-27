@@ -1,51 +1,64 @@
 package com.mareaviva.controller;
+
+import com.mareaviva.dto.LoginRequest;
 import com.mareaviva.dto.UserRegistrationDTO;
-import jakarta.validation.Valid;
-import com.mareaviva.dto.LoginDTO;
 import com.mareaviva.model.User;
 import com.mareaviva.service.UserService;
-
 import com.mareaviva.util.JwtUtil;
-
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
-    //@Autowired
+    @Autowired
     private UserService userService;
 
     @Autowired
     private JwtUtil jwtUtil;
 
-   // @Autowired
-    //private PasswordEncoder passwordEncoder;
+    @PostMapping("/register")
+    public ResponseEntity<String> registerUser(@Valid @RequestBody UserRegistrationDTO userDto) {
+        if (userService.findByEmail(userDto.getEmail()) != null) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("El email ya está registrado.");
+        }
 
-   // @PostMapping("/login")
-   // public ResponseEntity<?> login(@RequestBody LoginDTO dto) {
-      //  User user = userService.findByEmail(dto.getEmail());
+        userService.registerUser(userDto);
 
-       // if (user == null || !passwordEncoder.matches(dto.getPassword(), user.getPassword())) {
-         //   return ResponseEntity.status(401).body("Credenciales incorrectas");
-        //}
+        return ResponseEntity.status(HttpStatus.CREATED).body("Usuario registrado exitosamente: " + userDto.getFirstName());
+    }
 
-        //String token = jwtUtil.generateToken(user.getEmail());
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@Valid @RequestBody LoginRequest loginRequest) {
+        try {
+            User user = userService.findByEmail(loginRequest.getEmail());
 
-       // return ResponseEntity.ok().body("{\"token\":\"" + token + "\"}");
-   // }
-   // @PostMapping("/register")
-    //public ResponseEntity<?> register(@RequestBody @Valid UserRegistrationDTO dto) {
-   // try {
-     //   userService.registerUser(dto);
-      //  return ResponseEntity.ok().body("{\"message\":\"Usuario registrado con éxito\"}");
-   // } catch (Exception e) {
-     //   return ResponseEntity.status(400).body("{\"error\":\"" + e.getMessage() + "\"}");
-   // }
-//}
+            if (user != null) {
+              System.out.println("Usuario encontrado: " + user.getEmail());
+              System.out.println("Password almacenado en BD (encriptado): " + user.getPassword());
+              System.out.println("Password que envía el cliente (raw): " + loginRequest.getPassword());
+          } else {
+              System.out.println("Usuario NO encontrado");
+          }
 
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario no encontrado.");
+            }
 
+            boolean passwordMatches = userService.checkPassword(loginRequest.getPassword(), user.getPassword());
+            if (!passwordMatches) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Contraseña incorrecta.");
+            }
+
+            String token = jwtUtil.generateToken(user.getEmail());
+            return ResponseEntity.ok().body("{\"token\": \"" + token + "\"}");
+        } catch (Exception e) {
+            e.printStackTrace(); // Para ver el error en la consola
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error en el servidor: " + e.getMessage());
+        }
+    }
 }

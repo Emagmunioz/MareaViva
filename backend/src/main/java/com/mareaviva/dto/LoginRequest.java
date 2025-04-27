@@ -3,7 +3,7 @@ package com.mareaviva.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
-public class LoginDTO {
+public class LoginRequest {
 
     @NotBlank
     @Email
@@ -12,16 +12,7 @@ public class LoginDTO {
     @NotBlank
     private String password;
 
-    // Constructor vacío
-    public LoginDTO() {}
-
-    // Constructor completo
-    public LoginDTO(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-
-    // Getters y Setters
+    // Getters and Setters
     public String getEmail() {
         return email;
     }

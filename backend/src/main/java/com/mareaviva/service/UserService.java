@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); // O usa @Autowired
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -25,8 +25,8 @@ public class UserService {
                 userDto.getDni(),
                 userDto.getPhone(),
                 userDto.getEmail(),
-                passwordEncoder.encode(userDto.getPassword()), // Importante: encriptar
-                userDto.getRole() // 🚀 Añadido: ahora pasamos también el rol
+                passwordEncoder.encode(userDto.getPassword()), // Encriptar contraseña
+                userDto.getRole()
         );
 
         userRepository.save(user);
@@ -34,5 +34,9 @@ public class UserService {
 
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    public boolean checkPassword(String rawPassword, String encodedPassword) {
+        return passwordEncoder.matches(rawPassword, encodedPassword);
     }
 }

@@ -1,4 +1,5 @@
 C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\controller\PingController.java
+C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\dto\LoginRequest.java
 C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\service\EmailService.java
 C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\controller\ProfileController.java
 C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\model\User.java
@@ -14,11 +15,9 @@ C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\Applicati
 C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\controller\CollaboratorController.java
 C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\repository\UserRepository.java
 C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\config\WebConfig.java
-C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\dto\LoginDTO.java
 C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\controller\ChatController.java
 C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\config\WebSocketConfig.java
 C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\dto\UserRegistrationDTO.java
 C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\service\UserService.java
 C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\controller\ContactController.java
-C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\controller\UserController.java
 C:\Users\Usuario\Desktop\MareaViva\backend\src\main\java\com\mareaviva\repository\ProfileRepository.java
