@@ -1,105 +1,133 @@
-## Historias de Usuario y Criterios de Aceptación
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![Coverage](https://img.shields.io/badge/coverage-93%25-blue)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
+
+# 🌊 Marea Viva - Plataforma de Apoyo Emocional
+
+Backend de la plataforma **Marea Viva**, donde usuarios, voluntarios y profesionales se conectan para brindar acompañamiento emocional, a través de formularios, perfiles, email automático y chats en tiempo real.
+
+## 🚀 Tecnologías Usadas
+
+**Backend:**
+- Java 17
+- Spring Boot 3
+- Spring Web
+- Spring Security (JWT)
+- Spring Data JPA (MySQL)
+- JavaMailSender (Correo SMTP)
+- WebSocket (Chat en tiempo real)
+
+**Testing:**
+- JUnit 5
+- Mockito
+- Spring Boot Test (MockMvc)
+- Jackson + JavaTimeModule (Serialización JSON)
+
+---
+
+## 📚 Estructura del Proyecto
+
+```
+backend/
+├── config/         # Configuraciones de seguridad y WebSocket
+├── controller/     # Controladores REST (Auth, Chat, Profile, Contact, Collaborator)
+├── dto/            # Objetos de transferencia (UserRegistration, LoginRequest)
+├── model/          # Entidades JPA (User, Profile, Collaborator, GroupProposal)
+├── repository/     # Interfaces JPA
+├── service/        # Servicios (UserService, EmailService, CollaboratorService)
+├── util/           # Utilidades (JWT Token)
+├── exception/      # Manejador Global de Errores
+└── Application.java
+```
+
+---
+
+## 🔥 Principales Funcionalidades
+
+- Registro seguro de usuarios con rol dinámico (usuario, voluntario, profesional).
+- Creación de perfiles públicos para usuarios y voluntarios.
+- Envío de formularios de colaboración de profesionales y grupos.
+- Email automáticos para conexión entre usuarios-voluntarios.
+- Chat en tiempo real mediante WebSocket.
+- Autenticación segura mediante JWT tokens.
+
+---
+
+## ✅ Historias de Usuario y Criterios de Aceptación
 
 ### 🏠 HomePage
-**Historia de Usuario:**  
-Como visitante, quiero conocer el propósito de Marea Viva, sus pilares, testimonios y formas de participar.
-
-**Criterios de Aceptación:**
-- Sección introductoria con imagen.
+**Historia:** Conocer el propósito de Marea Viva, pilares, testimonios y participar.
+- Sección introductoria.
 - Cards para usuarios, voluntarios y profesionales.
-- Sección "Sobre Nosotros" y "Impacto Social" con testimonios e imágenes.
-- Sección "Participa o Apoya" incluida.
+- "Sobre Nosotros", "Impacto Social" y "Participa".
 - Header y Footer accesibles.
 
----
-
 ### 🔍 HowItWorks
-**Historia de Usuario:**  
-Como nuevo usuario o voluntario, quiero entender los pasos del proceso de acompañamiento.
-
-**Criterios de Aceptación:**
-- 6 pasos presentados con StepCards.
-- Enlaces funcionales a las pages correspondientes.
-- Modal emergente al activar SOS.
-- Grid responsivo.
-
----
+**Historia:** Entender pasos del proceso de acompañamiento.
+- 6 pasos con StepCards.
+- Enlaces funcionales.
+- Modal SOS y grid responsivo.
 
 ### 👤 ProfileForm
-**Historia de Usuario:**  
-Como usuario o voluntario, quiero completar mi perfil con rol, foto y descripción.
-
-**Criterios de Aceptación:**
-- Elección entre "usuario" y "voluntario".
-- Subida de foto y descripción.
-- Botón funcional para guardar perfil (simulado o vía API).
-- Redirección a Dashboard tras envío.
-
----
+**Historia:** Completar perfil con rol, foto y descripción.
+- Elección de rol.
+- Subida de imagen.
+- Guardado de perfil.
+- Redirección a Dashboard.
 
 ### 📋 EmotionEvaluation
-**Historia de Usuario:**  
-Como usuario, quiero completar un cuestionario emocional para recibir apoyo adecuado.
-
-**Criterios de Aceptación:**
-- Preguntas sobre estado ánimo, sueño, red de apoyo, etc.
-- Activación del modal si hay señales de riesgo.
-- Enlace a Chat si se detecta emergencia.
-- Estilo accesible y empático.
-
----
+**Historia:** Completar cuestionario emocional.
+- Preguntas emocionales.
+- Activar modal en señales de riesgo.
+- Redirección a Chat.
 
 ### 💬 ChatSupport
-**Historia de Usuario:**  
-Como usuario, quiero comunicarme con un voluntario en un chat.
-
-**Criterios de Aceptación:**
-- Chat con mensajes de ida y vuelta.
-- Campo de entrada y botón de envío.
+**Historia:** Comunicación en tiempo real con un voluntario.
+- Chat funcional.
 - Scroll automático.
 
----
-
 ### 🤝 GroupsFormPage
-**Historia de Usuario:**  
-Como usuario, quiero inscribirme en sesiones grupales.
-
-**Criterios de Aceptación:**
-- Imagen representativa a la izquierda.
-- Formulario con email, ciudad y provincia.
-- Confirmación textual de contacto futuro.
-
----
+**Historia:** Inscripción en sesiones grupales.
+- Formulario simple.
+- Confirmación textual.
 
 ### 🙋‍♂️ VolunteersPage
-**Historia de Usuario:**  
-Como voluntario potencial, quiero conocer las formas de colaborar con Marea Viva.
-
-**Criterios de Aceptación:**
-- Texto motivacional y descripción del rol del voluntario.
-- Imagen relacionada.
-- Botón funcional hacia ProfileForm.
-
----
+**Historia:** Información y motivación para voluntarios.
+- Texto inspirador y botón a ProfileForm.
 
 ### 🧑‍⚕️ FoundationsPage
-**Historia de Usuario:**  
-Como profesional o fundación, quiero saber cómo colaborar y ver ejemplos de alianzas.
+**Historia:** Información para profesionales y fundaciones.
+- Cards de alianzas.
+- Texto explicativo.
 
-**Criterios de Aceptación:**
-- Texto explicativo de colaboración profesional.
-- Cards con instituciones aliadas y enlaces activos.
-- Grid responsivo.
+### 📩 ContactPage
+**Historia:** Contactar al equipo o apoyar económicamente.
+- Formulario de contacto.
+- Integración con ParticipaApoyaSection.
 
 ---
 
-### 📩 ContactPage
-**Historia de Usuario:**  
-Como visitante, quiero contactar con el equipo o apoyar económicamente.
+## 🧪 Testing
 
-**Criterios de Aceptación:**
-- Título y texto introductorio.
-- Render del componente ParticipaApoyaSection.
-- Inputs para nombre, email y mensaje.
-- Botón de envío accesible.
+- Tests unitarios para Controladores, Servicios, Modelos y Utilidades.
+- Cobertura total de código de más del **93%**.
+- Testeados casos exitosos y errores controlados.
+
+
+```bash
+./mvnw test
+```
+
+---
+
+## 📬 Contacto
+
+¿Comentarios o sugerencias?  
+📩 **emagmunioz@gmail.com** 💙
+
+---
+
+## 📜 Licencia
+
+Código abierto bajo licencia MIT License.
 
