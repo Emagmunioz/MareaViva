@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import api from "@/services/api";
 import Modal from "@/components/Modal";
-import Header from "@/components/Header";   // ✅ Agregamos Header
-import Footer from "@/components/Footer";   // ✅ Agregamos Footer
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -13,20 +13,22 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     try {
-      await api.post("/auth/login", data);
+      const response = await api.post("/auth/login", data); // 🔥 Capturamos el response
+      const token = response.data.token; // 🔥 Obtenemos el token
+      localStorage.setItem("token", token); // 🔥 Guardamos el token en localStorage
+
+      // Redirigir a dashboard
       navigate("/dashboard");
     } catch (error) {
-      const msg = error.response?.data?.error || "Error al iniciar sesión. Intenta nuevamente.";
+      const msg = error.response?.data?.message || error.response?.data || "Error al iniciar sesión. Intenta nuevamente.";
       setModal({ open: true, message: msg, type: "error" });
     }
   };
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Header */}
       <Header />
 
-      {/* Formulario */}
       <main className="flex-grow bg-gradient-to-b from-[#D0F1FD] to-[#2980b9] flex items-center justify-center p-4">
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -68,7 +70,6 @@ export default function Login() {
         )}
       </main>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

@@ -48,7 +48,7 @@ export default function ProfileForm() {
         }
 
         setTimeout(() => {
-          navigate("/dashboard");
+          navigate("/");
         }, 2000);
       } else {
         setMessage("Error al guardar el perfil.");

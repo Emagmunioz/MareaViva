@@ -1,7 +1,14 @@
 import React from "react";
 import { FiCheckCircle, FiAlertCircle } from "react-icons/fi";
 
-export default function Modal({ message, type = "success", onClose, bgColor = "#DBCACA" }) {
+export default function Modal({
+  message,
+  type = "success",
+  onClose,
+  bgColor = "#DBCACA",
+  buttonColor = "#F7B733",
+  buttonText = "Cerrar"
+}) {
   const borderColor = type === "success" ? "#30CFC0" : "#F7B733";
   const Icon = type === "success" ? FiCheckCircle : FiAlertCircle;
   const title = type === "success" ? "Éxito" : "Error";
@@ -19,21 +26,19 @@ export default function Modal({ message, type = "success", onClose, bgColor = "#
         <div className="flex justify-center mb-2">
           <Icon size={40} color={borderColor} />
         </div>
-        <h3 className="text-lg font-bold mb-2 text-gray-800">
-          {title}
-        </h3>
+        <h3 className="text-lg font-bold mb-2 text-gray-800">{title}</h3>
         <p className="text-gray-700 mb-4">{message}</p>
         <button
           onClick={onClose}
           className="text-white font-semibold px-4 py-2 rounded transition"
           style={{
-            backgroundColor: "#F7B733",
+            backgroundColor: buttonColor,
             boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
           }}
           onMouseOver={(e) => (e.currentTarget.style.backgroundColor = "#e5a323")}
-          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = "#F7B733")}
+          onMouseOut={(e) => (e.currentTarget.style.backgroundColor = buttonColor)}
         >
-          Cerrar
+          {buttonText}
         </button>
       </div>
 

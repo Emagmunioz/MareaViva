@@ -1,10 +1,13 @@
 import React from "react";
 import { logout } from "../services/authService.js";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     logout();
-    window.location.href = "/login";
+    navigate("/"); // Redirige al home "/" tras cerrar sesión
   };
 
   return (
@@ -13,9 +16,9 @@ export default function Dashboard() {
       <p className="text-lg text-gray-700 mb-6">Acceso autorizado con token.</p>
       <button
         onClick={handleLogout}
-        className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
+        className="px-6 py-2 bg-[#f6a21e] hover:bg-[#e5921c] text-white rounded-lg transition"
       >
-        Cerrar sesión
+        Ir al Inicio
       </button>
     </div>
   );
