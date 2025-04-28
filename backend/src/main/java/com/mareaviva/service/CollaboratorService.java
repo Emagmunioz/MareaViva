@@ -20,10 +20,10 @@ public class CollaboratorService {
     }
 
     public Collaborator save(Collaborator collaborator) {
-        // Guardar en base de datos
+       
         Collaborator savedCollaborator = repository.save(collaborator);
 
-        // Enviar notificación interna a emagmunioz@gmail.com
+        
         sendNotificationToAdmin(savedCollaborator);
 
         return savedCollaborator;
@@ -31,7 +31,7 @@ public class CollaboratorService {
 
     private void sendNotificationToAdmin(Collaborator collaborator) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo("emagmunioz@gmail.com"); // 📩 Fijo: SIEMPRE a este correo
+        message.setTo("emagmunioz@gmail.com"); 
         message.setSubject("Nuevo formulario de colaboración recibido en Marea Viva");
         message.setText(
             "Se ha recibido un nuevo formulario de colaboración:\n\n" +

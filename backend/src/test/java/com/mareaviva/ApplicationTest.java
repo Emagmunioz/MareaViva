@@ -10,7 +10,7 @@ class ApplicationTest {
 
     @Test
     void contextLoads() {
-        // Simplemente verifica que la app arranca correctamente
+        
         assertTrue(true);
     }
 }

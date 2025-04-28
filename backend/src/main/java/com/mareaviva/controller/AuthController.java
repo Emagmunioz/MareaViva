@@ -57,7 +57,7 @@ public class AuthController {
             String token = jwtUtil.generateToken(user.getEmail());
             return ResponseEntity.ok().body("{\"token\": \"" + token + "\"}");
         } catch (Exception e) {
-            e.printStackTrace(); // Para ver el error en la consola
+            e.printStackTrace(); 
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error en el servidor: " + e.getMessage());
         }
     }

@@ -16,7 +16,7 @@ public class UserServiceTest {
 
     @Test
     public void shouldSaveUserToRepository() {
-        // Arrange
+       
         UserRepository mockRepo = mock(UserRepository.class);
         UserService userService = new UserService(mockRepo);
 
@@ -30,10 +30,10 @@ public class UserServiceTest {
         dto.setEmail("ana@example.com");
         dto.setPassword("secure123");
 
-        // Act
+        
         userService.registerUser(dto);
 
-        // Assert
+       
         ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
         verify(mockRepo, times(1)).save(userCaptor.capture());
 

@@ -28,8 +28,8 @@ public class ContactController {
         if (optionalProfile.isPresent()) {
             Profile volunteer = optionalProfile.get();
 
-            String volunteerEmail = "prueba@mareaviva.org"; // Email de prueba fijo
-            String userName = "Usuario Anónimo"; // 🔥 Valor temporal para no romper nada
+            String volunteerEmail = "prueba@mareaviva.org"; 
+            String userName = "Usuario Anónimo"; 
 
             emailService.sendContactNotification(volunteerEmail, volunteer.getFirstName(), userName);
 
@@ -39,7 +39,7 @@ public class ContactController {
         }
     }
 
-    // Clase auxiliar para mapear el JSON de la solicitud
+    
     public static class ContactRequest {
         private Long volunteerId;
 

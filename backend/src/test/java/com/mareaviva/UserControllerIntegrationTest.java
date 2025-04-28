@@ -22,7 +22,7 @@ public class UserControllerIntegrationTest {
 
     @Test
     public void shouldRegisterUserSuccessfully() {
-        // Crear DTO de prueba
+        
         UserRegistrationDTO userDto = new UserRegistrationDTO();
         userDto.setFirstName("Carlos");
         userDto.setLastName("López");
@@ -33,7 +33,7 @@ public class UserControllerIntegrationTest {
         userDto.setEmail("carlos@example.com");
         userDto.setPassword("mypassword");
 
-        // Enviar solicitud POST
+        
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<UserRegistrationDTO> request = new HttpEntity<>(userDto, headers);
@@ -41,7 +41,7 @@ public class UserControllerIntegrationTest {
         ResponseEntity<String> response = restTemplate.postForEntity("/auth/register", request, String.class);
 
 
-        // Verificar respuesta
+       
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(response.getBody()).isEqualTo("User registered successfully");
     }

@@ -40,7 +40,7 @@ public class CollaboratorController {
         String collaboratorName = collaborator.getName();
         String collaboratorMessage = collaborator.getDescription();
     
-        // Enviar email al admin (o donde quieras)
+        
         emailService.sendCollaborationRequest(
             "emagmunioz@gmail.com",
             collaboratorName,

@@ -25,7 +25,7 @@ public class UserService {
                 userDto.getDni(),
                 userDto.getPhone(),
                 userDto.getEmail(),
-                passwordEncoder.encode(userDto.getPassword()), // Encriptar contraseña
+                passwordEncoder.encode(userDto.getPassword()), 
                 userDto.getRole()
         );
 

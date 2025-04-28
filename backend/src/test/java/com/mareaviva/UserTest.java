@@ -20,11 +20,11 @@ public class UserTest {
                 "612345678", 
                 "laura@example.com", 
                 "securePassword123",
-                "usuario"  // 🚀 nuevo campo role
+                "usuario"  
         );
 
         assertThat(user.getFirstName()).isEqualTo("Laura");
         assertThat(user.getEmail()).isEqualTo("laura@example.com");
-        assertThat(user.getRole()).isEqualTo("usuario"); // (opcional: también puedes testear el rol)
+        assertThat(user.getRole()).isEqualTo("usuario"); 
     }
 }

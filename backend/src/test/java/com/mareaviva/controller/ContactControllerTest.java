@@ -62,6 +62,6 @@ class ContactControllerTest {
         mockMvc.perform(post("/api/contact-volunteer")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
-                .andExpect(status().is4xxClientError()); // <-- CORREGIDO
+                .andExpect(status().is4xxClientError()); 
     }
 }

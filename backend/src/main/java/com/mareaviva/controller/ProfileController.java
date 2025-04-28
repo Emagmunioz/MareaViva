@@ -16,7 +16,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/profile")
-@CrossOrigin(origins = "http://localhost:5173") // Permitir peticiones del frontend
+@CrossOrigin(origins = "http://localhost:5173") 
 public class ProfileController {
 
     private static final String UPLOAD_DIR = "uploads";
@@ -64,13 +64,13 @@ public class ProfileController {
         return profileRepository.save(profile);
     }
 
-    // 🔥 GET: Listar todos los perfiles
+    
     @GetMapping("/all")
     public List<Profile> getAllProfiles() {
         return profileRepository.findAll();
     }
 
-    // 🔥 PUT: Modificar un perfil
+    
     @PutMapping("/{id}")
     public Profile updateProfile(@PathVariable Long id, @RequestBody Profile updatedProfile) {
         return profileRepository.findById(id)
@@ -85,7 +85,7 @@ public class ProfileController {
                 .orElseThrow(() -> new RuntimeException("Perfil no encontrado con ID: " + id));
     }
 
-    // 🔥 DELETE: Eliminar un perfil
+   
     @DeleteMapping("/{id}")
     public String deleteProfile(@PathVariable Long id) {
         if (!profileRepository.existsById(id)) {

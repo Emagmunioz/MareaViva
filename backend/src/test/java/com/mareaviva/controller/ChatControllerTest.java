@@ -10,14 +10,14 @@ class ChatControllerTest {
 
     @Test
     void shouldReturnSameMessage() {
-        // Arrange
+       
         ChatMessage message = new ChatMessage();
         message.setText("Hola Mundo");
 
-        // Act
+       
         ChatMessage response = chatController.sendMessage(message);
 
-        // Assert
+        
         assertEquals("Hola Mundo", response.getText());
     }
 }
