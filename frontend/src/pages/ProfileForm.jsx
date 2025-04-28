@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import defaultProfileImage from "@/assets/Examen.png"; // Imagen por defecto
+import defaultProfileImage from "@/assets/Examen.png"; 
 
 export default function ProfileForm() {
   const [firstName, setFirstName] = useState("");

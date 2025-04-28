@@ -22,14 +22,14 @@ export default function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* Autenticación */}
+        
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
 
-        {/* Redirección de raíz "/" a "/home" */}
+        
         <Route path="/" element={<Navigate to="/home" />} />
 
-        {/* Rutas públicas */}
+       
         <Route path="/home" element={<Home />} />
         <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/volunteers" element={<VolunteersPage />} />
@@ -41,14 +41,14 @@ export default function App() {
         <Route path="/chat" element={<ChatSupport />} />
         <Route path="/seek-support" element={<SeekSupport />} />
         <Route path="/admin-crud" element={<AdminCrudProfiles />} />
-        {/* Rutas protegidas */}
+        
         <Route path="/dashboard" element={
           <PrivateRoute>
             <Dashboard />
           </PrivateRoute>
         } />
 
-        {/* Página no encontrada */}
+       
         <Route path="*" element={<NotFoundPage />} />
         
       </Routes>

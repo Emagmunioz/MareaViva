@@ -7,12 +7,12 @@ const api = axios.create({
   },
 });
 
-// Interceptor de request (se ejecuta antes de cada llamada)
+
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token"); // Buscamos token
+    const token = localStorage.getItem("token"); 
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`; // Lo ponemos en headers
+      config.headers.Authorization = `Bearer ${token}`; 
     }
     return config;
   },

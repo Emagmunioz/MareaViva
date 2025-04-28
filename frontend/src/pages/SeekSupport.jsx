@@ -7,7 +7,7 @@ export default function SeekSupport() {
   const [profiles, setProfiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [contacting, setContacting] = useState(false);
-  const [filterRole, setFilterRole] = useState("voluntario"); // 🔥 Nuevo: selecciona "voluntario" o "usuario"
+  const [filterRole, setFilterRole] = useState("voluntario"); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -69,7 +69,7 @@ export default function SeekSupport() {
           Encuentra apoyo
         </h2>
 
-        {/* 🔥 Nuevo: Selector entre voluntarios y usuarios */}
+        
         <div className="flex justify-center mb-10">
           <button
             onClick={() => setFilterRole("voluntario")}

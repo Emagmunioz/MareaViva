@@ -7,7 +7,7 @@ export default function Dashboard() {
 
   const handleLogout = () => {
     logout();
-    navigate("/"); // Redirige al home "/" tras cerrar sesión
+    navigate("/"); 
   };
 
   return (

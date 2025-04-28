@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"; // 🔥 Importante para navegación interna
+import { Link } from "react-router-dom"; 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -49,10 +49,10 @@ export default function FoundationsPage() {
           Potencia tu visibilidad, participa en acciones solidarias y ayuda a transformar vidas.
         </p>
 
-        {/* 🔥 Botón para ir a la página de contacto */}
+        
         <div className="flex justify-center mb-12">
           <Link
-            to="/contacto"
+            to="/contact"
             className="bg-[#f7b733] hover:bg-[#f6a21e] text-white font-semibold py-3 px-8 rounded-full transition shadow-md hover:shadow-lg"
           >
             Quiero colaborar

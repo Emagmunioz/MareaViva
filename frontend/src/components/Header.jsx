@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <header className="bg-[#2ccfcf] text-white shadow px-0 py-2">
       <div className="flex items-center justify-between h-24 px-4 md:px-6">
-        {/* Logo pegado totalmente a la izquierda */}
+       
         <div className="flex items-center h-full gap-2 flex-shrink-0">
           <img 
             src={logo} 
@@ -23,7 +23,7 @@ export default function Header() {
           />
         </div>
 
-        {/* Menú máximo ancho */}
+       
         <div className="flex-1 flex justify-end">
           <nav className="hidden md:flex gap-6 items-center text-sm font-medium">
             <Link to="/home" className="hover:underline">Inicio</Link>
@@ -45,7 +45,7 @@ export default function Header() {
             </Link>
           </nav>
 
-          {/* Botón hamburguesa (mobile) */}
+         
           <button
             className="md:hidden flex items-center text-white focus:outline-none ml-4"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -67,7 +67,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      
       {menuOpen && (
         <div className="md:hidden flex flex-col gap-3 mt-4 text-sm font-medium text-center">
           <Link to="/home" onClick={() => setMenuOpen(false)}>Inicio</Link>

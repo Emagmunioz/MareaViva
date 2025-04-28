@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form"; // <-- 🔥 Aquí
+import { useForm } from "react-hook-form"; 
 import { useNavigate } from "react-router-dom";
 import api from "@/services/api";
 import Modal from "@/components/Modal";
@@ -109,7 +109,6 @@ export default function Register() {
           />
           {errors.confirmPassword && <p className="text-[#DBBABA] text-sm">{errors.confirmPassword.message}</p>}
 
-          {/* 🚀 Selección de rol */}
           <select {...register("role", { required: "Selecciona un rol" })} className="bg-[#A0E4E4] p-2 rounded mb-4 w-full">
             <option value="">Selecciona tu rol</option>
             <option value="usuario">Usuario</option>

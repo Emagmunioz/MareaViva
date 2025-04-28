@@ -11,7 +11,7 @@ export default function ChatSupport() {
   ]);
   const [input, setInput] = useState("");
   const [stompClient, setStompClient] = useState(null);
-  const chatEndRef = useRef(null); // 🚀 referencia al final del chat
+  const chatEndRef = useRef(null); 
 
   useEffect(() => {
     const socket = new SockJS("http://localhost:8080/chat-websocket");
@@ -38,7 +38,7 @@ export default function ChatSupport() {
     };
   }, []);
 
-  // 🚀 Scroll automático al recibir mensajes
+ 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -54,7 +54,7 @@ export default function ChatSupport() {
       body: JSON.stringify(message),
     });
   
-    setInput(""); // 🔥 Solo limpiamos el input, no agregamos el mensaje manualmente
+    setInput(""); 
   };
   
   
@@ -79,7 +79,7 @@ export default function ChatSupport() {
               {msg.text}
             </div>
           ))}
-          {/* 🚀 Este div invisible es donde se hace el scroll automático */}
+         
           <div ref={chatEndRef} />
         </div>
 

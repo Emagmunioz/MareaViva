@@ -86,7 +86,7 @@ function ProfileCard({ profile, onUpdate, onDelete }) {
   return (
     <div className="bg-[#A0E4E4] p-6 rounded-xl shadow-md">
       
-      {/* 🔥 Mostrar imagen si existe */}
+     
       {editProfile.imageUrl && (
         <div className="flex flex-col items-center mb-4">
           <img
@@ -103,7 +103,7 @@ function ProfileCard({ profile, onUpdate, onDelete }) {
         </div>
       )}
 
-      {/* Datos editables */}
+      
       <input
         type="text"
         value={editProfile.firstName || ""}
@@ -125,7 +125,7 @@ function ProfileCard({ profile, onUpdate, onDelete }) {
         className="w-full p-2 rounded mb-4 border min-h-[80px]"
       />
 
-      {/* Botones */}
+     
       <div className="flex justify-between">
         <button
           onClick={() => onUpdate(profile.id, editProfile)}

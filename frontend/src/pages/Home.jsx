@@ -12,7 +12,7 @@ export default function Home() {
     <div className="font-['Poppins'] text-black bg-gradient-to-b from-[#D0F1FD] to-[#2980b9] min-h-screen">
       <Header />
 
-      {/* Sección introductoria */}
+      
       <Section title="¿Por qué nace Marea Viva?">
         <p className="mb-6">
           Más de 280 millones de personas sufren de ansiedad o depresión. Muchas de ellas no tienen acceso a apoyo emocional. Nosotros queremos cambiar eso.
@@ -38,7 +38,7 @@ export default function Home() {
         </p>
       </Section>
 
-      {/* Sección Impacto Social con fondo estilizado */}
+      
       <section className="bg-white/90 py-16 px-6 rounded-xl shadow-inner max-w-6xl mx-auto my-12">
         <h2 className="text-3xl font-semibold text-center text-teal-700 mb-10">Impacto Social</h2>
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -53,7 +53,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sección Participa o Apoya */}
+     
       <ParticipaApoyaSection />
 
       

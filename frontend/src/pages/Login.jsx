@@ -13,11 +13,11 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await api.post("/auth/login", data); // 🔥 Capturamos el response
-      const token = response.data.token; // 🔥 Obtenemos el token
-      localStorage.setItem("token", token); // 🔥 Guardamos el token en localStorage
+      const response = await api.post("/auth/login", data); 
+      const token = response.data.token; 
+      localStorage.setItem("token", token); 
 
-      // Redirigir a dashboard
+      
       navigate("/dashboard");
     } catch (error) {
       const msg = error.response?.data?.message || error.response?.data || "Error al iniciar sesión. Intenta nuevamente.";

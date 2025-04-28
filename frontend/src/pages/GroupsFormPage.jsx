@@ -9,7 +9,7 @@ export default function GroupsFormPage() {
       <Header />
 
       <main className="flex-grow max-w-6xl mx-auto py-12 px-4 flex flex-col gap-12">
-        {/* 🔥 Título y descripción centrados */}
+       
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-teal-700 mb-4">
             Únete a nuestras sesiones grupales
@@ -19,7 +19,7 @@ export default function GroupsFormPage() {
           </p>
         </div>
 
-        {/* 🔥 Grid para la imagen + formulario */}
+        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <img
             src={terapia}
@@ -33,7 +33,7 @@ export default function GroupsFormPage() {
         </div>
       </main>
 
-      {/* 🔥 Mensaje final, ya estaba bien */}
+      
       <section className="max-w-3xl mx-auto px-4 pb-16 text-center text-gray-700">
         <p>
           <strong>Gracias por tu interés en nuestras sesiones grupales.</strong><br />

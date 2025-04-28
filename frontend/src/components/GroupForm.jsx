@@ -11,7 +11,7 @@ export default function GroupForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Formulario capturado:", formData); // ✅ Simulamos el envío
+    console.log("Formulario capturado:", formData); 
     // try {
     //   const res = await axios.post("/api/groups", formData);
     //   alert("Formulario enviado correctamente");

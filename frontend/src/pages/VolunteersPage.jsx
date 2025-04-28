@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import practicas from "@/assets/practicas.png"; // Asegúrate que esté bien importado
+import practicas from "@/assets/practicas.png"; 
 
 export default function VolunteersPage() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ export default function VolunteersPage() {
       <main className="flex-grow bg-gradient-to-b from-[#D0F1FD] to-[#2980b9] flex items-center justify-center p-6">
         <div className="bg-white rounded-xl shadow-lg overflow-hidden grid md:grid-cols-2 max-w-6xl w-full">
 
-          {/* Columna Izquierda: Imagen */}
+          
           <div className="flex items-center justify-center bg-[#A0E4E4] p-6">
             <img
               src={practicas}
@@ -23,7 +23,7 @@ export default function VolunteersPage() {
             />
           </div>
 
-          {/* Columna Derecha: Texto + Botón */}
+         
           <div className="flex flex-col justify-center items-center p-8">
             <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
               ¡Únete a nuestra red de voluntarios!

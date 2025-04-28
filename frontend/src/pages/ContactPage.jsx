@@ -15,7 +15,7 @@ export default function ContactPage() {
           Completa el formulario a continuación y nos pondremos en contacto contigo.
         </p>
 
-        {/* Nuevo párrafo breve para suavizar la transición */}
+       
         <p className="text-center mb-8 text-base text-gray-700">
           Buscamos crear una comunidad donde el bienestar emocional sea una prioridad. 
           Tu apoyo es fundamental para expandir esta red solidaria.
@@ -23,7 +23,7 @@ export default function ContactPage() {
 
         <ParticipaApoyaSection />
 
-        {/* 🔥 Texto pequeñito abajo */}
+       
         <div className="mt-10 text-center text-sm text-black">
           ¿Ya tienes un perfil creado y deseas <span className="font-semibold text-black">modificar</span> o <span className="font-semibold text-black">eliminar</span> tus datos? <br />
           Por favor escribe a{" "}

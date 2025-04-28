@@ -4,17 +4,17 @@ const cardData = [
   {
     title: "Usuarios",
     desc: "Acceden a apoyo emocional seguro y humano de forma gratuita.",
-    route: "/how-it-works", // ✅ corregido
+    route: "/how-it-works", 
   },
   {
     title: "Voluntarios",
     desc: "Estudiantes o profesionales en paro ofrecen escucha activa y acompañamiento.",
-    route: "/volunteers", // ✅ corregido
+    route: "/volunteers", 
   },
   {
     title: "Profesionales",
     desc: "Promocionan su trabajo ayudando en una causa solidaria.",
-    route: "/foundations", // ✅ corregido
+    route: "/foundations", 
   },
 ];
 

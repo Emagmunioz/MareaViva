@@ -7,7 +7,7 @@ import {
   HeartHandshake,
 } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom"; // <- Importante que esté
+import { Link } from "react-router-dom"; 
 import StepCard from "@/components/StepCard";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -45,7 +45,7 @@ export default function HowItWorks() {
             />
           </Link>
 
-          {/* AQUI modificamos "Buscar apoyo" para que sea un enlace */}
+         
           <Link to="/seek-support">
             <StepCard
               Icon={Users}
