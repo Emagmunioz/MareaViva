@@ -1,0 +1,30 @@
+# === GLOBAL ===
+.DS_Store
+*.log
+*.env
+.env.*
+*.local
+
+# === BACKEND (Java/Maven) ===
+/backend/target/
+/backend/.idea/
+/backend/*.iml
+/backend/.classpath
+/backend/.project
+
+# === FRONTEND (React, Angular, etc.) ===
+/frontend/node_modules/
+/frontend/dist/
+/frontend/build/
+/frontend/.env
+/frontend/.next/
+/frontend/.turbo/
+/frontend/.vite/
+
+# === OS/Editor ===
+*.swp
+*.swo
+*.bak
+*.tmp
+.vscode/
+.idea/
