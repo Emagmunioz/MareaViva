@@ -31,7 +31,7 @@ public class EmailService {
 
     public void sendCollaborationRequest(String toAdminEmail, String collaboratorName, String collaboratorMessage) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("tu-email@gmail.com");
+        message.setFrom("pruebaMareaViva@gmail.com");
         message.setTo(toAdminEmail);
         message.setSubject("🤝 Nueva solicitud de colaboración - " + collaboratorName);
         message.setText(
